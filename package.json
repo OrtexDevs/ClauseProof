@@ -1,0 +1,21 @@
+{
+  "name": "clauseproof-platform",
+  "version": "1.0.0",
+  "description": "ClauseProof — SME IPO Compliance-as-Code Operating System (SEBI TechSprint Problem Statement 4)",
+  "private": true,
+  "scripts": {
+    "dev": "python3 start.py",
+    "start": "python3 start.py",
+    "dev:client": "cd client && npm run dev",
+    "dev:backend": "cd backend && uvicorn app.main:app --reload --port 8000"
+  },
+  "keywords": [
+    "regtech",
+    "sebi",
+    "techsprint",
+    "ipo",
+    "compliance-as-code"
+  ],
+  "author": "ClauseProof Architecture Team",
+  "license": "MIT"
+}

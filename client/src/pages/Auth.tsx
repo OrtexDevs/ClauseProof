@@ -114,7 +114,7 @@ export const Auth: React.FC = () => {
                       <option value="promoter">Promoter / SME Issuer</option>
                       <option value="merchant_banker">Merchant Banker (Lead Manager)</option>
                       <option value="legal_counsel">Legal Counsel / Advisor</option>
-                      <option value="compliance_officer">SEBI Compliance Officer</option>
+                      <option value="compliance_officer">Company Secretary / Internal Compliance</option>
                     </select>
                   </div>
                 </div>

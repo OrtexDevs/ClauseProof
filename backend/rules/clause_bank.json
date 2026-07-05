@@ -1,0 +1,110 @@
+{
+  "COVER": {
+    "section_name": "Cover Page",
+    "schedule_vi_ref": "Part A, Section (I)",
+    "precedent_template": "DRAFT RED HERRING PROSPECTUS\nDated: [CURRENT_DATE]\nPlease read Section 32 of the Companies Act, 2013\n\n100% BOOK BUILT ISSUE\n\n[COMPANY_NAME] (the \"Company\" or \"Issuer\") was incorporated under the Companies Act with CIN: [CIN]. Registered Office: [REGISTERED_OFFICE].\n\nPUBLIC ISSUE OF UP TO [FRESH_ISSUE_SHARES] EQUITY SHARES OF FACE VALUE OF ₹[FACE_VALUE] EACH OF [COMPANY_NAME] FOR CASH AT A PRICE OF ₹[PRICE_BAND_HIGH] PER EQUITY SHARE AGGREGATING UP TO ₹[ISSUE_SIZE_CR] CRORES (\"THE ISSUE\") ON THE SME PLATFORM OF THE STOCK EXCHANGE.\n\nRISK IN RELATION TO THE FIRST ISSUE: This being the first public issue of Equity Shares of our Company, there has been no formal market for the Equity Shares. The face value of the Equity Shares is ₹[FACE_VALUE] and the Floor Price is 3 times of the face value and the Cap Price is 5 times of the face value.\n\nLEAD MANAGER TO THE ISSUE: Merchant Banker (Lead Manager)\nREGISTRAR TO THE ISSUE: Share Transfer Agent",
+    "keywords": ["100% BOOK BUILT ISSUE", "SME PLATFORM", "RISK IN RELATION TO THE FIRST ISSUE", "LEAD MANAGER"]
+  },
+  "RISK": {
+    "section_name": "Risk Factors",
+    "schedule_vi_ref": "Part A, Section (II)",
+    "precedent_template": "SECTION II: RISK FACTORS\n\nAn investment in equity shares involves a high degree of risk. Prospective investors should carefully consider all the information in this Draft Red Herring Prospectus, including the risks and uncertainties described below, before making an investment decision in our Equity Shares.\n\n1. BUSINESS & OPERATIONAL RISKS:\nOur business is subject to rapid technological and market changes in our industry. Any failure to innovate or meet client demands could adversely affect our revenues. In FY3, our operating revenue stood at ₹[REVENUE_FY3] Crores with an EBITDA of ₹[EBITDA_FY3] Crores.\n\n2. CLIENT CONCENTRATION RISK:\nA significant portion of our revenues is derived from a limited number of top clients. The loss of any major client or a significant reduction in business from them could materially impair our financial condition.\n\n3. SME EXCHANGE LIQUIDITY RISK:\nThe Equity Shares of our Company are proposed to be listed on the SME Platform of the Stock Exchange. Trading on the SME Platform involves a minimum lot size of ₹2,00,000 (per SEBI ICDR 2025 norms), which may limit secondary market liquidity compared to the Main Board.\n\n4. WORKING CAPITAL & CASH FLOW RISKS:\nOur business requires substantial working capital. Any delay in realization of receivables or tightening of credit facilities from banks could impact our day-to-day operations.",
+    "keywords": ["BUSINESS & OPERATIONAL RISKS", "CLIENT CONCENTRATION RISK", "SME EXCHANGE LIQUIDITY RISK", "WORKING CAPITAL"]
+  },
+  "OBJECTS": {
+    "section_name": "Objects of the Issue",
+    "schedule_vi_ref": "Part A, Section (IV)",
+    "precedent_template": "SECTION IV: OBJECTS OF THE ISSUE\n\nThe Net Proceeds from the Fresh Issue of Equity Shares aggregating up to ₹[ISSUE_SIZE_CR] Crores are proposed to be utilized in accordance with Regulation 230 of the SEBI (ICDR) Regulations towards the following objects:\n\n1. Funding Capital Expenditure Requirements: Towards expansion of our operating infrastructure and technology upgrade.\n2. Working Capital Requirements: To support our expanding scale of operations and growing order book.\n3. General Corporate Purposes (GCP): Subject to Regulation 230(2), the allocation towards General Corporate Purposes shall not exceed 15% of the total issue size or ₹10.00 Crores, whichever is lower.\n\nSCHEDULE OF IMPLEMENTATION & FUND DEPLOYMENT:\nThe entire Net Proceeds are expected to be deployed across FY 2026-27 and FY 2027-28 as monitored by our Audit Committee.",
+    "keywords": ["Net Proceeds", "Capital Expenditure", "Working Capital", "General Corporate Purposes", "Regulation 230"]
+  },
+  "CAPITAL": {
+    "section_name": "Capital Structure",
+    "schedule_vi_ref": "Part A, Section (III)",
+    "precedent_template": "SECTION III: CAPITAL STRUCTURE\n\nThe share capital of our Company prior to the Issue and as proposed post-Issue is set forth below:\n\n1. AUTHORIZED SHARE CAPITAL:\n5,00,00,000 Equity Shares of Face Value ₹[FACE_VALUE]/- each aggregating to ₹50.00 Crores.\n\n2. ISSUED, SUBSCRIBED & PAID-UP SHARE CAPITAL PRIOR TO THE ISSUE:\n[PRE_ISSUE_SHARES] Equity Shares of ₹[FACE_VALUE]/- each.\n\n3. PRESENT ISSUE IN TERMS OF THIS DRHP:\nPublic Issue of up to [FRESH_ISSUE_SHARES] Fresh Equity Shares plus an Offer for Sale (OFS) of up to [OFS_SHARES] Equity Shares (OFS capped at max 20% of total issue per Regulation 230(1)).\n\n4. PAID-UP SHARE CAPITAL AFTER THE ISSUE:\nPost-Issue Paid-up Share Capital will stand at ₹[POST_ISSUE_PAID_UP_CAPITAL] Crores (satisfying Regulation 229 SME corridor of ₹1 Crore to ₹25 Crore).",
+    "keywords": ["AUTHORIZED SHARE CAPITAL", "PAID-UP SHARE CAPITAL", "PRESENT ISSUE", "Regulation 229"]
+  },
+  "BIZ_OVERVIEW": {
+    "section_name": "Our Business & Industry",
+    "schedule_vi_ref": "Part A, Section (VI)",
+    "precedent_template": "SECTION VI: OUR BUSINESS & INDUSTRY OVERVIEW\n\n1. OVERVIEW OF OUR BUSINESS:\n[COMPANY_NAME] is a fast-growing enterprise operating in the [INDUSTRY] sector. We specialize in delivering high-value solutions to our enterprise clients. Over the last three financial years, we have demonstrated consistent growth, expanding our operating revenue from ₹[REVENUE_FY1] Crores in FY1 to ₹[REVENUE_FY3] Crores in FY3.\n\n2. COMPETITIVE STRENGTHS:\n- Experienced Promoter and Management Team with deep domain expertise.\n- Proven track record of financial profitability and operational efficiency.\n- Scalable business model with robust client retention.\n\n3. BUSINESS STRATEGY:\n- Expanding geographical reach into Tier-2 and Tier-3 industrial hubs.\n- Investing in R&D and proprietary technology platforms.\n- Enhancing operating margins through process automation.",
+    "keywords": ["OVERVIEW OF OUR BUSINESS", "COMPETITIVE STRENGTHS", "BUSINESS STRATEGY", "revenue growth"]
+  },
+  "MANAGEMENT": {
+    "section_name": "Our Management & Board",
+    "schedule_vi_ref": "Part A, Section (VIII)",
+    "precedent_template": "SECTION VIII: OUR MANAGEMENT & BOARD OF DIRECTORS\n\n1. BOARD OF DIRECTORS:\nIn compliance with the Companies Act, 2013 and SEBI Listing Obligations and Disclosure Requirements (LODR) Regulations, our Board comprises an optimal combination of Executive, Non-Executive, and Independent Directors.\n\n2. KEY MANAGERIAL PERSONNEL (KMP):\nOur daily operations are spearheaded by our Promoter and Managing Director, supported by our Chief Financial Officer (CFO) and Company Secretary (CS) / Compliance Officer.\n\n3. CORPORATE GOVERNANCE:\nOur Company has constituted the mandatory Audit Committee, Nomination & Remuneration Committee, and Stakeholders' Relationship Committee.",
+    "keywords": ["BOARD OF DIRECTORS", "KEY MANAGERIAL PERSONNEL", "CORPORATE GOVERNANCE", "Audit Committee"]
+  },
+  "FINANCIALS": {
+    "section_name": "Financial Information",
+    "schedule_vi_ref": "Part A, Section (IX)",
+    "precedent_template": "SECTION IX: FINANCIAL INFORMATION & RESTATED STATEMENTS\n\nThe restated summary financial statements of our Company for the preceding three financial years, audited by our Statutory Auditors in accordance with SEBI ICDR Regulations, are summarized below:\n\n1. REVENUE FROM OPERATIONS:\n- FY1: ₹[REVENUE_FY1] Crores\n- FY2: ₹[REVENUE_FY2] Crores\n- FY3: ₹[REVENUE_FY3] Crores\n\n2. OPERATING PROFIT (EBITDA):\n- FY1: ₹[EBITDA_FY1] Crores\n- FY2: ₹[EBITDA_FY2] Crores\n- FY3: ₹[EBITDA_FY3] Crores\n(Satisfying SEBI ICDR Regulation 229 positive EBITDA requirement in at least 2 of 3 years)\n\n3. PROFIT AFTER TAX (PAT) & NET WORTH:\n- FY3 PAT: ₹[PAT_FY3] Crores | Net Worth: ₹[NET_WORTH] Crores.",
+    "keywords": ["RESTATED STATEMENTS", "REVENUE FROM OPERATIONS", "OPERATING PROFIT", "EBITDA", "NET WORTH"]
+  },
+  "LEGAL": {
+    "section_name": "Legal & Other Information",
+    "schedule_vi_ref": "Part A, Section (X)",
+    "precedent_template": "SECTION X: LEGAL & OTHER INFORMATION\n\n1. OUTSTANDING LITIGATION & MATERIAL DEVELOPMENTS:\nExcept as disclosed in this section, there are no outstanding criminal proceedings, statutory or regulatory actions, or material civil litigations involving our Company, our Promoters, or our Directors that would materially impact our financial position.\n\n2. GOVERNMENT & REGULATORY APPROVALS:\nWe have obtained all material statutory and regulatory licenses, permissions, and approvals necessary to carry out our normal business operations in India.\n\n3. TAXATION MATTERS:\nThere are no material direct or indirect tax demands pending before any appellate authority except routine assessments.",
+    "keywords": ["OUTSTANDING LITIGATION", "REGULATORY APPROVALS", "TAXATION MATTERS"]
+  },
+  "GENERAL": {
+    "section_name": "General Information",
+    "schedule_vi_ref": "Part A, Section (V)",
+    "precedent_template": "SECTION V: GENERAL INFORMATION\n\n1. ISSUER DETAILS:\nCompany Name: [COMPANY_NAME]\nCIN: [CIN]\nRegistered Office: [REGISTERED_OFFICE]\n\n2. INTERMEDIARIES TO THE ISSUE:\nLead Manager: Merchant Banker (Lead Manager)\nLegal Counsel: Legal Counsel / Advisor\nStatutory Auditors: Chartered Accountants\nRegistrar to the Issue: Share Transfer Agent\n\n3. AUTHORITY FOR THE ISSUE:\nThe present Issue has been authorized by a resolution of our Board of Directors and a Special Resolution passed by our shareholders under Section 62(1)(c) of the Companies Act, 2013.",
+    "keywords": ["ISSUER DETAILS", "INTERMEDIARIES TO THE ISSUE", "AUTHORITY FOR THE ISSUE"]
+  },
+  "PROMOTERS": {
+    "section_name": "Our Promoters & Group",
+    "schedule_vi_ref": "Part A, Section (VII)",
+    "precedent_template": "SECTION VII: OUR PROMOTERS & GROUP COMPANIES\n\n1. PROMOTER BACKGROUND:\nOur Company was promoted by our core founding promoters who possess over a decade of cumulative industry experience in the [INDUSTRY] sector.\n\n2. PROMOTER SHAREHOLDING & CONTRIBUTION:\nPrior to the public issue, our Promoters hold [PRE_ISSUE_SHARES] Equity Shares representing 100% of the pre-issue paid-up share capital. In compliance with Regulation 236 of SEBI ICDR Regulations, the Promoters shall contribute at least 20% of the post-issue share capital as Minimum Promoter's Contribution, which shall be locked in for a period of 3 years from the date of allotment.\n\n3. GROUP COMPANIES:\nOur Company does not have any material group companies with overlapping business interests that would cause a conflict of interest.",
+    "keywords": ["PROMOTER BACKGROUND", "Minimum Promoter's Contribution", "lock-in period", "Regulation 236"]
+  },
+  "STATUTORY": {
+    "section_name": "Statutory & Other Information",
+    "schedule_vi_ref": "Part A, Section (XI)",
+    "precedent_template": "SECTION XI: STATUTORY & OTHER INFORMATION\n\n1. MATERIAL CONTRACTS & DOCUMENTS FOR INSPECTION:\nThe copies of material contracts, including the Issue Agreement with the Lead Manager, Registrar Agreement, and Tripartite Agreements with Depositories, will be available for inspection at our Registered Office during normal business hours from the date of filing of this DRHP until the Issue Closing Date.\n\n2. CONSENTS:\nWe have obtained written consents from our Lead Manager, Legal Counsel, Statutory Auditors, Registrar to the Issue, and Bankers to the Issue to act in their respective capacities.",
+    "keywords": ["MATERIAL CONTRACTS", "DOCUMENTS FOR INSPECTION", "CONSENTS"]
+  },
+  "OFFER_DETAILS": {
+    "section_name": "Terms of the Present Issue",
+    "schedule_vi_ref": "Part A, Section (XII)",
+    "precedent_template": "SECTION XII: TERMS OF THE PRESENT ISSUE\n\n1. ISSUE STRUCTURE:\nPublic Issue of up to [FRESH_ISSUE_SHARES] Equity Shares of Face Value ₹[FACE_VALUE]/- each for cash at a price of ₹[PRICE_BAND_HIGH]/- per Equity Share aggregating up to ₹[ISSUE_SIZE_CR] Crores.\n\n2. MINIMUM APPLICATION SIZE:\nIn accordance with Regulation 231 of SEBI ICDR Regulations (2025 norm), applications by retail and institutional investors on the SME Exchange shall be for a minimum application value of ₹2,00,000/- (Two Lakh Rupees) and in multiples of the specified lot size thereafter.\n\n3. BID / ISSUE TIMETABLE:\nBid/Issue Opens On: [TO_BE_NOTIFIED]\nBid/Issue Closes On: [TO_BE_NOTIFIED]\nFinalization of Basis of Allotment: Within 2 working days of issue closure.",
+    "keywords": ["ISSUE STRUCTURE", "MINIMUM APPLICATION SIZE", "Regulation 231", "₹2,00,000"]
+  },
+  "REGULATORY": {
+    "section_name": "Regulatory Disclosures",
+    "schedule_vi_ref": "Part A, Section (XIII)",
+    "precedent_template": "SECTION XIII: REGULATORY DISCLOSURES\n\n1. SEBI ELIGIBILITY & COMPLIANCE:\nOur Company is eligible for the Issue in accordance with Regulation 229 of Chapter IX of the SEBI (ICDR) Regulations, having a positive EBITDA in at least 2 of the 3 preceding financial years and a post-issue paid-up capital of ₹[POST_ISSUE_PAID_UP_CAPITAL] Crores (within the ₹1 Crore to ₹25 Crore SME limit).\n\n2. PROHIBITION BY SEBI:\nNeither our Company, nor our Promoters, nor our Directors are debarred or prohibited from accessing the capital markets by any order or direction passed by SEBI or any other regulatory authority.\n\n3. WILFUL DEFAULTER / FRAUDULENT BORROWER:\nNeither our Company nor our Promoters/Directors are categorized as a Wilful Defaulter or Fraudulent Borrower by any bank or financial institution as defined under RBI guidelines.",
+    "keywords": ["SEBI ELIGIBILITY", "Regulation 229", "PROHIBITION BY SEBI", "WILFUL DEFAULTER"]
+  },
+  "OFFER_STRUCTURE": {
+    "section_name": "Issue Structure & Allocation",
+    "schedule_vi_ref": "Part A, Section (XIV)",
+    "precedent_template": "SECTION XIV: ISSUE STRUCTURE & ALLOCATION\n\n1. ALLOCATION OF THE ISSUE:\nThe present 100% Book Built Issue is structured on the SME Platform of the Stock Exchange as follows:\n- Qualified Institutional Buyers (QIBs): Not more than 50% of the Net Issue.\n- Non-Institutional Investors (NIIs): Not less than 15% of the Net Issue.\n- Retail Individual Investors (RIIs): Not less than 35% of the Net Issue.\n- Market Maker Reservation Portion: 5% of the total Issue Size reserved exclusively for the Market Maker in compliance with Regulation 261 of SEBI ICDR Regulations.\n\n2. ALLOTMENT PROCEDURE:\nAllotment will be made in dematerialized form only through the ASBA (Application Supported by Blocked Amount) process.",
+    "keywords": ["ALLOCATION OF THE ISSUE", "Market Maker Reservation", "Regulation 261", "ASBA"]
+  },
+  "APPLICATION_PROCEDURE": {
+    "section_name": "Application & Allotment Procedure",
+    "schedule_vi_ref": "Part A, Section (XV)",
+    "precedent_template": "SECTION XV: APPLICATION & ALLOTMENT PROCEDURE\n\n1. MANDATORY ASBA & UPI:\nAll applicants must apply through the ASBA (Application Supported by Blocked Amount) process. Retail Individual Investors applying up to ₹5,00,000 can utilize the UPI (Unified Payments Interface) mechanism for blocking funds in accordance with SEBI circulars.\n\n2. ELECTRONIC ALLOTMENT:\nThe Equity Shares will be allotted in dematerialized form only. Investors must ensure that their demat account is active and linked with a valid PAN and bank account prior to submitting the application.",
+    "keywords": ["ASBA", "UPI", "ELECTRONIC ALLOTMENT", "dematerialized"]
+  },
+  "INTERMEDIARIES": {
+    "section_name": "Intermediaries & Advisors",
+    "schedule_vi_ref": "Part A, Section (XVI)",
+    "precedent_template": "SECTION XVI: INTERMEDIARIES & ADVISORS\n\n1. LEAD MANAGER TO THE ISSUE:\nMerchant Banker (Lead Manager)\nSEBI Registration No: INM000000000\n\n2. LEGAL COUNSEL TO THE ISSUE:\nLegal Counsel / Advisor\n\n3. REGISTRAR TO THE ISSUE:\nShare Transfer Agent\nSEBI Registration No: INR000000000\n\n4. BANKERS TO THE ISSUE & ESCROW COLLECTION BANK:\nScheduled Commercial Bank\n\n5. STATUTORY AUDITORS:\nChartered Accountants\nICAI Firm Registration No: 000000N",
+    "keywords": ["LEAD MANAGER", "LEGAL COUNSEL", "REGISTRAR TO THE ISSUE", "STATUTORY AUDITORS"]
+  },
+  "DECLARATION": {
+    "section_name": "Declaration by Issuer",
+    "schedule_vi_ref": "Part A, Section (XVII)",
+    "precedent_template": "SECTION XVII: DECLARATION BY THE ISSUER & PROMOTERS\n\nWe hereby certify and declare that all statements made in this Draft Red Herring Prospectus are true, accurate, and correct to the best of our knowledge and belief. No material information has been concealed, omitted, or suppressed that would make any statement in this offer document misleading.\n\nWe confirm that this Draft Red Herring Prospectus has been prepared in full compliance with the provisions of the Companies Act, 2013 and the SEBI (Issue of Capital and Disclosure Requirements) Regulations, 2018 (as amended up to 2025/2026).\n\nSIGNED BY:\n- Promoter & Managing Director\n- Whole-Time Director\n- Chief Financial Officer (CFO)\n- Company Secretary & Compliance Officer\n\nPlace: [REGISTERED_OFFICE]\nDate: [CURRENT_DATE]",
+    "keywords": ["DECLARATION", "true, accurate, and correct", "SEBI ICDR Regulations", "SIGNED BY"]
+  },
+  "ANNEXURES": {
+    "section_name": "Annexures & Precedent Reports",
+    "schedule_vi_ref": "Part A, Section (XVIII)",
+    "precedent_template": "SECTION XVIII: ANNEXURES & PRECEDENT REPORTS\n\nThe following annexures form an integral part of this Draft Red Herring Prospectus:\n\nANNEXURE A: Restated Financial Statements & Auditors' Examination Report.\nANNEXURE B: Statement of Tax Benefits certified by Statutory Auditors.\nANNEXURE C: Site Visit Report by Lead Manager & Technical Advisors.\nANNEXURE D: Peer Benchmarking & Valuation Multiple Comparison Sheet.\nANNEXURE E: Cryptographic SHA-256 Compliance Sign-Off Verification Ledger.",
+    "keywords": ["ANNEXURES", "Restated Financial Statements", "Statement of Tax Benefits", "Site Visit Report", "SHA-256"]
+  }
+}

@@ -84,25 +84,20 @@ export const DeltaWizard: React.FC = () => {
     }
   };
 
-  const handleGenerateAIDraft = () => {
+  const handleGenerateAIDraft = async () => {
     if (!project || !sections[currentIdx]) return;
     const sec = sections[currentIdx];
-    
-    // Simulate smart Schedule VI drafting template
-    let draft = `[DRAFT RED HERRING PROSPECTUS DISCLOSURE: ${sec.section_name.toUpperCase()}]\n\n`;
-    if (sec.section_code === 'COVER_PAGE') {
-      draft += `1. ISSUER DETAILS:\n   Company Name: ${project.company_name}\n   Corporate Identity Number (CIN): ${project.cin || 'N/A'}\n   Registered Office: ${project.registered_office || 'N/A'}\n\n2. THE OFFER:\n   Initial Public Offering of up to ${(project.fresh_issue_shares || 0) + (project.ofs_shares || 0)} Equity Shares of Face Value ₹${project.face_value || 10} each for cash at a price of ₹${project.price_band_high || '—'} per Equity Share, aggregating up to ₹${project.issue_size_cr} Crores.\n\n3. MANDATORY SEBI RISK DISCLAIMER:\n   Investment in equity shares involves a high degree of risk and for details relating to the same, see "Risk Factors" on page 14 of this Draft Red Herring Prospectus.`;
-    } else if (sec.section_code === 'RISK_FACTORS') {
-      draft += `INTERNAL RISK FACTORS:\n1. Our business is heavily dependent on the ${project.industry} sector. Any downturn in this industry will materially affect our revenues and PAT.\n2. We have experienced negative cash flows in previous financial years and may continue to do so in the future.\n3. Our top 5 customers contribute over 65% of our revenue from operations.\n\nEXTERNAL RISK FACTORS:\n1. Regulatory changes by SEBI or other governmental bodies regarding SME IPOs and continuous disclosure obligations.\n2. Macroeconomic volatility and interest rate fluctuations in the Indian financial markets.`;
-    } else if (sec.section_code === 'OBJECTS_OF_ISSUE') {
-      draft += `UTILIZATION OF NET PROCEEDS:\nThe Net Proceeds from the Fresh Issue (₹${(project.issue_size_cr || 20) * 0.85} Cr) are proposed to be utilized in accordance with Regulation 230 of SEBI ICDR Regulations as follows:\n\n1. Capital Expenditure & Infrastructure Expansion: 50%\n2. Funding Working Capital Requirements: 35%\n3. General Corporate Purposes (GCP): 15% (Capped at lower of 15% or ₹10 Crore as per SEBI regulations)\n\nNo part of the IPO proceeds shall be utilized towards repayment of promoter loans or related party borrowings.`;
-    } else {
-      draft += `This section covers disclosures pertaining to ${sec.section_name} as required under Schedule VI, Part A of the SEBI (Issue of Capital and Disclosure Requirements) Regulations, 2025. All figures and statements herein have been verified against restated audited financial statements and issuer corporate records.`;
+    setSaving(true);
+    try {
+      const res = await apiService.generateDraft(project.id, sec.section_code);
+      setContent(res.draft_content);
+      setSaveMessage('Generated from Precedent Clause Bank!');
+      setTimeout(() => setSaveMessage(''), 3000);
+    } catch (err: any) {
+      setSaveMessage('Error drafting: ' + err.message);
+    } finally {
+      setSaving(false);
     }
-
-    setContent(draft);
-    setSaveMessage('Generated SEBI Schedule VI Draft!');
-    setTimeout(() => setSaveMessage(''), 3000);
   };
 
   if (loading) return <div className="h-96 rounded-3xl bg-slate-800/40 animate-pulse border border-white/5" />;

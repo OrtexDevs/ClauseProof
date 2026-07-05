@@ -8,10 +8,36 @@ from typing import List
 from app.core.database import get_sync_db
 from app.core.security import get_current_user
 from app.core.audit_chain import AuditChain
-from app.models.database_models import User, DRHPSection
+from app.models.database_models import User, DRHPSection, Project
 from app.schemas.api_schemas import SectionCreate, SectionUpdate, SectionResponse
+from app.core.drafting_engine import generate_section_draft
 
 router = APIRouter(prefix="/projects/{project_id}/sections", tags=["Sections"])
+
+
+@router.post("/{section_code}/draft")
+def generate_draft(
+    project_id: str,
+    section_code: str,
+    db: Session = Depends(get_sync_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Generate a SEBI Schedule VI precedent-grounded draft for a section."""
+    project = db.query(Project).filter(Project.id == project_id).first()
+    project_data = {}
+    if project:
+        project_data = {
+            "name": project.name,
+            "industry": project.industry,
+            "issue_size_cr": project.issue_size_cr,
+            "pre_issue_shares": project.pre_issue_shares,
+            "fresh_issue_shares": project.fresh_issue_shares,
+            "ofs_shares": project.ofs_shares,
+            "price_band_high": project.price_band_high,
+            "face_value": project.face_value,
+            "financials": project.financials or {}
+        }
+    return generate_section_draft(section_code, project_data)
 
 
 @router.get("/", response_model=List[SectionResponse])

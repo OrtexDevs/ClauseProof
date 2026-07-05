@@ -23,7 +23,7 @@ export const Badge: React.FC<BadgeProps> = ({
     warning: 'bg-amber-500/15 text-amber-400 border-amber-500/30',
     info: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
     draft: 'bg-slate-700/40 text-slate-300 border-slate-600/40',
-    primary: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40 shadow-glow/20',
+    primary: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40 shadow-glow',
   };
 
   return (

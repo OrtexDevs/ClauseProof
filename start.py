@@ -49,12 +49,29 @@ def main():
 
     try:
         # 1. Start FastAPI Backend
-        print("\033[36m[BACKEND]\033[0m Launching FastAPI Uvicorn Server...")
-        venv_python = os.path.join(backend_dir, "venv", "bin", "python")
-        if not os.path.exists(venv_python):
-            # Fallback to system python3 if venv not present
-            venv_python = sys.executable
+        venv_dir = os.path.join(backend_dir, "venv")
+        venv_python = os.path.join(venv_dir, "bin", "python")
+        venv_pip = os.path.join(venv_dir, "bin", "pip")
 
+        if not os.path.exists(venv_python):
+            print("\033[33m[SETUP]\033[0m Creating Python virtual environment in backend/venv...")
+            subprocess.run([sys.executable, "-m", "venv", "venv"], cwd=backend_dir, check=True)
+            venv_python = os.path.join(venv_dir, "bin", "python")
+            venv_pip = os.path.join(venv_dir, "bin", "pip")
+
+        # Check if uvicorn & core dependencies are installed in venv
+        try:
+            subprocess.run(
+                [venv_python, "-c", "import uvicorn, fastapi, sqlalchemy"],
+                check=True,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL
+            )
+        except Exception:
+            print("\033[33m[SETUP]\033[0m Installing backend requirements (pip install -r requirements.txt)...")
+            subprocess.run([venv_pip, "install", "-r", "requirements.txt"], cwd=backend_dir, check=True)
+
+        print("\033[36m[BACKEND]\033[0m Launching FastAPI Uvicorn Server...")
         backend_cmd = [venv_python, "-m", "uvicorn", "app.main:app", "--reload", "--port", "8000"]
         backend_proc = subprocess.Popen(
             backend_cmd,

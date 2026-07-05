@@ -1,0 +1,317 @@
+[
+    {
+        "rule_code": "ICDR_ELIG_001",
+        "regulation": "ICDR_2018_AMD_2025",
+        "chapter": "IX",
+        "section_ref": "Regulation 229 - Eligibility",
+        "rule_text": "The issuer must have positive EBITDA (operating profit) in at least 2 of the 3 preceding financial years.",
+        "validation_logic": {
+            "type": "financial_threshold",
+            "field": "ebitda",
+            "condition": "count_positive_years >= 2",
+            "lookback_years": 3
+        },
+        "category": "eligibility",
+        "severity": "mandatory",
+        "applicable_to": "sme",
+        "applicable_sections": ["FINANCIAL_STATEMENTS"]
+    },
+    {
+        "rule_code": "ICDR_ELIG_002",
+        "regulation": "ICDR_2018_AMD_2025",
+        "chapter": "IX",
+        "section_ref": "Regulation 229 - Capital Limits",
+        "rule_text": "The post-issue paid-up capital of the issuer must be between ₹1 crore and ₹25 crore for SME listing.",
+        "validation_logic": {
+            "type": "capital_structure",
+            "field": "post_issue_paid_up_capital",
+            "min_crores": 1,
+            "max_crores": 25
+        },
+        "category": "eligibility",
+        "severity": "mandatory",
+        "applicable_to": "sme",
+        "applicable_sections": ["CAPITAL_STRUCTURE"]
+    },
+    {
+        "rule_code": "ICDR_ELIG_003",
+        "regulation": "ICDR_2018_AMD_2025",
+        "chapter": "IX",
+        "section_ref": "Regulation 229(2)(c) - Track Record",
+        "rule_text": "The entity must have been in existence for at least one full financial year before filing the DRHP.",
+        "validation_logic": {
+            "type": "date_constraint",
+            "field": "incorporation_date",
+            "constraint": "min_years_ago",
+            "value": 1
+        },
+        "category": "eligibility",
+        "severity": "mandatory",
+        "applicable_to": "sme",
+        "applicable_sections": ["INTRODUCTION"]
+    },
+    {
+        "rule_code": "ICDR_DISC_001",
+        "regulation": "ICDR_2018",
+        "chapter": "VI",
+        "section_ref": "Schedule VI, Part A - Mandatory Sections",
+        "rule_text": "The DRHP must contain all mandatory sections as per Schedule VI, Part A of ICDR Regulations.",
+        "validation_logic": {
+            "type": "section_completeness",
+            "required_sections": [
+                "COVER_PAGE", "TABLE_OF_CONTENTS", "DEFINITIONS",
+                "RISK_FACTORS", "INTRODUCTION", "CAPITAL_STRUCTURE",
+                "OBJECTS_OF_ISSUE", "BASIS_FOR_ISSUE_PRICE",
+                "BUSINESS_OVERVIEW", "KEY_INDUSTRY_REGULATIONS",
+                "FINANCIAL_STATEMENTS", "MANAGEMENT",
+                "PROMOTER_GROUP", "LEGAL_PROCEEDINGS",
+                "GENERAL_INFORMATION", "OTHER_REGULATORY_DISCLOSURES"
+            ]
+        },
+        "category": "disclosure",
+        "severity": "mandatory",
+        "applicable_to": "all",
+        "applicable_sections": null
+    },
+    {
+        "rule_code": "ICDR_DISC_002",
+        "regulation": "ICDR_2018",
+        "chapter": "VI",
+        "section_ref": "Schedule VI - Company Details",
+        "rule_text": "The issuer must provide complete company identification details including CIN, registered office, and incorporation date.",
+        "validation_logic": {
+            "type": "field_required",
+            "fields": ["company_name", "cin", "incorporation_date", "registered_office", "industry"]
+        },
+        "category": "disclosure",
+        "severity": "mandatory",
+        "applicable_to": "all",
+        "applicable_sections": ["COVER_PAGE", "INTRODUCTION"]
+    },
+    {
+        "rule_code": "ICDR_DISC_003",
+        "regulation": "ICDR_2018",
+        "chapter": "VI",
+        "section_ref": "Schedule VI - Financial Details",
+        "rule_text": "The issuer must provide revenue, EBITDA, and PAT data for at least 3 preceding financial years.",
+        "validation_logic": {
+            "type": "field_required",
+            "fields": ["revenue_fy1", "revenue_fy2", "revenue_fy3", "ebitda_fy1", "ebitda_fy2", "ebitda_fy3", "pat_fy1", "pat_fy2", "pat_fy3"]
+        },
+        "category": "financial",
+        "severity": "mandatory",
+        "applicable_to": "all",
+        "applicable_sections": ["FINANCIAL_STATEMENTS"]
+    },
+    {
+        "rule_code": "ICDR_ISSUE_001",
+        "regulation": "ICDR_2018_AMD_2025",
+        "chapter": "IX",
+        "section_ref": "Regulation 232 - OFS Limits",
+        "rule_text": "Offer for Sale (OFS) component must not exceed 20% of the total issue size for SME IPOs.",
+        "validation_logic": {
+            "type": "ofs_limit",
+            "max_percentage": 20
+        },
+        "category": "structural",
+        "severity": "mandatory",
+        "applicable_to": "sme",
+        "applicable_sections": ["CAPITAL_STRUCTURE"]
+    },
+    {
+        "rule_code": "ICDR_ISSUE_002",
+        "regulation": "ICDR_2018_AMD_2025",
+        "chapter": "IX",
+        "section_ref": "Regulation 232A - GCP Limits",
+        "rule_text": "General Corporate Purpose allocation must not exceed 15% of fresh issue proceeds or ₹10 crore, whichever is lower.",
+        "validation_logic": {
+            "type": "gcp_limit",
+            "max_percentage": 15,
+            "max_absolute_crores": 10
+        },
+        "category": "structural",
+        "severity": "mandatory",
+        "applicable_to": "sme",
+        "applicable_sections": ["OBJECTS_OF_ISSUE"]
+    },
+    {
+        "rule_code": "ICDR_ISSUE_003",
+        "regulation": "ICDR_2018_AMD_2025",
+        "chapter": "IX",
+        "section_ref": "Regulation 230 - Issue Size",
+        "rule_text": "The issue size must be specified with valid price band and lot size information.",
+        "validation_logic": {
+            "type": "field_required",
+            "fields": ["issue_size_cr", "face_value", "lot_size"]
+        },
+        "category": "structural",
+        "severity": "mandatory",
+        "applicable_to": "sme",
+        "applicable_sections": ["COVER_PAGE", "OBJECTS_OF_ISSUE"]
+    },
+    {
+        "rule_code": "ICDR_ISSUE_004",
+        "regulation": "ICDR_2018_AMD_2025",
+        "chapter": "IX",
+        "section_ref": "Regulation 230(1)(b) - Minimum Application Size",
+        "rule_text": "The minimum application size for SME IPO must be ₹2 lakhs. Lot size must be configured accordingly.",
+        "validation_logic": {
+            "type": "field_range",
+            "field": "lot_size",
+            "min": 1,
+            "max": 10000,
+            "unit": " shares"
+        },
+        "category": "structural",
+        "severity": "mandatory",
+        "applicable_to": "sme",
+        "applicable_sections": ["COVER_PAGE"]
+    },
+    {
+        "rule_code": "ICDR_FIN_001",
+        "regulation": "ICDR_2018",
+        "chapter": "VI",
+        "section_ref": "Schedule VI - Net Worth",
+        "rule_text": "The issuer must disclose net worth and ensure it is positive.",
+        "validation_logic": {
+            "type": "field_range",
+            "field": "net_worth",
+            "min": 0.01,
+            "max": null,
+            "unit": " Cr"
+        },
+        "category": "financial",
+        "severity": "mandatory",
+        "applicable_to": "all",
+        "applicable_sections": ["FINANCIAL_STATEMENTS"]
+    },
+    {
+        "rule_code": "ICDR_FIN_002",
+        "regulation": "ICDR_2018",
+        "chapter": "VI",
+        "section_ref": "Schedule VI - Revenue Disclosure",
+        "rule_text": "Revenue from operations must be disclosed for 3 preceding financial years with year-over-year comparisons.",
+        "validation_logic": {
+            "type": "financial_threshold",
+            "field": "revenue",
+            "condition": "count_positive_years >= 2",
+            "lookback_years": 3
+        },
+        "category": "financial",
+        "severity": "recommended",
+        "applicable_to": "all",
+        "applicable_sections": ["FINANCIAL_STATEMENTS"]
+    },
+    {
+        "rule_code": "ICDR_FIN_003",
+        "regulation": "ICDR_2018",
+        "chapter": "VI",
+        "section_ref": "Schedule VI - PAT Disclosure",
+        "rule_text": "Profit After Tax (PAT) must be disclosed for 3 preceding financial years.",
+        "validation_logic": {
+            "type": "financial_threshold",
+            "field": "pat",
+            "condition": "count_positive_years >= 1",
+            "lookback_years": 3
+        },
+        "category": "financial",
+        "severity": "recommended",
+        "applicable_to": "all",
+        "applicable_sections": ["FINANCIAL_STATEMENTS"]
+    },
+    {
+        "rule_code": "ICDR_CONTENT_001",
+        "regulation": "ICDR_2018",
+        "chapter": "VI",
+        "section_ref": "Schedule VI - Risk Factors",
+        "rule_text": "Risk Factors section must contain substantive risk disclosures (minimum 500 characters of content).",
+        "validation_logic": {
+            "type": "content_length",
+            "section_code": "RISK_FACTORS",
+            "min_characters": 500
+        },
+        "category": "disclosure",
+        "severity": "mandatory",
+        "applicable_to": "all",
+        "applicable_sections": ["RISK_FACTORS"]
+    },
+    {
+        "rule_code": "ICDR_CONTENT_002",
+        "regulation": "ICDR_2018",
+        "chapter": "VI",
+        "section_ref": "Schedule VI - Business Overview",
+        "rule_text": "Business Overview section must contain comprehensive description of products, services, and operations.",
+        "validation_logic": {
+            "type": "content_length",
+            "section_code": "BUSINESS_OVERVIEW",
+            "min_characters": 500
+        },
+        "category": "disclosure",
+        "severity": "mandatory",
+        "applicable_to": "all",
+        "applicable_sections": ["BUSINESS_OVERVIEW"]
+    },
+    {
+        "rule_code": "ICDR_CONTENT_003",
+        "regulation": "ICDR_2018",
+        "chapter": "VI",
+        "section_ref": "Schedule VI - Objects of Issue",
+        "rule_text": "Objects of the Issue must clearly specify the use of IPO proceeds with breakdowns.",
+        "validation_logic": {
+            "type": "content_length",
+            "section_code": "OBJECTS_OF_ISSUE",
+            "min_characters": 200
+        },
+        "category": "disclosure",
+        "severity": "mandatory",
+        "applicable_to": "all",
+        "applicable_sections": ["OBJECTS_OF_ISSUE"]
+    },
+    {
+        "rule_code": "ICDR_STRUCT_001",
+        "regulation": "ICDR_2018",
+        "chapter": "VI",
+        "section_ref": "Schedule VI - Capital Structure Shares",
+        "rule_text": "The issuer must specify pre-issue and fresh issue share counts for capital structure disclosure.",
+        "validation_logic": {
+            "type": "field_required",
+            "fields": ["pre_issue_shares", "fresh_issue_shares"]
+        },
+        "category": "structural",
+        "severity": "mandatory",
+        "applicable_to": "all",
+        "applicable_sections": ["CAPITAL_STRUCTURE"]
+    },
+    {
+        "rule_code": "ICDR_STRUCT_002",
+        "regulation": "ICDR_2018_AMD_2025",
+        "chapter": "IX",
+        "section_ref": "Regulation 229 - Price Band",
+        "rule_text": "SME IPO must specify price band (lower and upper) for book building process.",
+        "validation_logic": {
+            "type": "field_required",
+            "fields": ["price_band_low", "price_band_high"]
+        },
+        "category": "structural",
+        "severity": "recommended",
+        "applicable_to": "sme",
+        "applicable_sections": ["COVER_PAGE", "BASIS_FOR_ISSUE_PRICE"]
+    },
+    {
+        "rule_code": "ICDR_XREF_001",
+        "regulation": "ICDR_2018",
+        "chapter": "VI",
+        "section_ref": "Schedule VI - Price Band Consistency",
+        "rule_text": "The lower bound of the price band must be less than or equal to the upper bound.",
+        "validation_logic": {
+            "type": "cross_reference",
+            "source_field": "price_band_low",
+            "target_field": "price_band_high",
+            "relationship": "less_than_equal"
+        },
+        "category": "structural",
+        "severity": "mandatory",
+        "applicable_to": "all",
+        "applicable_sections": ["COVER_PAGE"]
+    }
+]

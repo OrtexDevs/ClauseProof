@@ -40,24 +40,33 @@ def main():
     backend_dir = os.path.join(root_dir, "backend")
     client_dir = os.path.join(root_dir, "client")
 
+    npm_cmd = "npm.cmd" if os.name == "nt" else "npm"
     # Ensure npm install was run in client
     if not os.path.exists(os.path.join(client_dir, "node_modules")):
         print("\033[33m[SETUP]\033[0m Installing frontend dependencies (npm install)...")
-        subprocess.run(["npm", "install"], cwd=client_dir, check=True)
+        subprocess.run([npm_cmd, "install"], cwd=client_dir, check=True)
 
     processes = []
 
     try:
         # 1. Start FastAPI Backend
         venv_dir = os.path.join(backend_dir, "venv")
-        venv_python = os.path.join(venv_dir, "bin", "python")
-        venv_pip = os.path.join(venv_dir, "bin", "pip")
+        if os.name == "nt":
+            venv_python = os.path.join(venv_dir, "Scripts", "python.exe")
+            venv_pip = os.path.join(venv_dir, "Scripts", "pip.exe")
+        else:
+            venv_python = os.path.join(venv_dir, "bin", "python")
+            venv_pip = os.path.join(venv_dir, "bin", "pip")
 
         if not os.path.exists(venv_python):
             print("\033[33m[SETUP]\033[0m Creating Python virtual environment in backend/venv...")
             subprocess.run([sys.executable, "-m", "venv", "venv"], cwd=backend_dir, check=True)
-            venv_python = os.path.join(venv_dir, "bin", "python")
-            venv_pip = os.path.join(venv_dir, "bin", "pip")
+            if os.name == "nt":
+                venv_python = os.path.join(venv_dir, "Scripts", "python.exe")
+                venv_pip = os.path.join(venv_dir, "Scripts", "pip.exe")
+            else:
+                venv_python = os.path.join(venv_dir, "bin", "python")
+                venv_pip = os.path.join(venv_dir, "bin", "pip")
 
         # Check if uvicorn & core dependencies are installed in venv
         try:
@@ -84,11 +93,11 @@ def main():
         processes.append(backend_proc)
         threading.Thread(target=stream_logs, args=(backend_proc.stdout, "[BACKEND]", "36"), daemon=True).start()
 
-        time.sleep(1.5)  # Give backend a head start
+        # Removed time.sleep(1.5) so frontend starts concurrently with backend
 
         # 2. Start React Frontend
         print("\033[35m[CLIENT]\033[0m Launching Vite React+TS Dev Server...")
-        client_cmd = ["npm", "run", "dev", "--", "--port", "3000", "--host"]
+        client_cmd = [npm_cmd, "run", "dev", "--", "--port", "3000", "--host"]
         client_proc = subprocess.Popen(
             client_cmd,
             cwd=client_dir,

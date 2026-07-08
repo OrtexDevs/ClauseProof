@@ -10,16 +10,16 @@ from datetime import datetime, date
 # === Auth Schemas ===
 
 class UserCreate(BaseModel):
-    email: str
-    name: str
-    password: str
+    email: EmailStr
+    name: str = Field(min_length=2, max_length=100)
+    password: str = Field(min_length=8, max_length=128)
     role: str = "promoter"
-    organization: Optional[str] = None
+    organization: Optional[str] = Field(default=None, max_length=200)
 
 
 class UserLogin(BaseModel):
-    email: str
-    password: str
+    email: EmailStr
+    password: str = Field(min_length=8, max_length=128)
 
 
 class UserResponse(BaseModel):
@@ -43,8 +43,8 @@ class TokenResponse(BaseModel):
 # === Project Schemas ===
 
 class ProjectCreate(BaseModel):
-    name: str
-    company_name: str
+    name: str = Field(min_length=3, max_length=100)
+    company_name: str = Field(min_length=2, max_length=200)
     cin: Optional[str] = None
     incorporation_date: Optional[date] = None
     registered_office: Optional[str] = None
@@ -133,8 +133,8 @@ class ProjectListResponse(BaseModel):
 # === Section Schemas ===
 
 class SectionCreate(BaseModel):
-    section_code: str
-    section_name: str
+    section_code: str = Field(min_length=1, max_length=50)
+    section_name: str = Field(min_length=2, max_length=200)
     section_order: int = 0
     parent_section_id: Optional[str] = None
     content: Optional[dict] = None

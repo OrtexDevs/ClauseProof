@@ -100,13 +100,13 @@ export const NewProject: React.FC = () => {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/dashboard')}
-            className="w-10 h-10 rounded-xl bg-card border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/20 transition-all"
+            className="w-10 h-10 rounded-xl bg-card border border-[#D9CFC7] flex items-center justify-center text-[#78716c] hover:text-[#44403c] hover:border-white/20 transition-all"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
           <div>
-            <h1 className="text-2xl font-black text-white tracking-tight">Initialize SME IPO Filing</h1>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <h1 className="text-2xl font-black text-[#1c1917] tracking-tight">Initialize SME IPO Filing</h1>
+            <p className="text-xs text-[#78716c] mt-0.5">
               Enter issuer parameters to auto-generate 18 Schedule VI sections and configure deterministic rule checks
             </p>
           </div>
@@ -124,19 +124,19 @@ export const NewProject: React.FC = () => {
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Step 1: Company Profile */}
         <Card glass>
-          <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
-            <div className="w-8 h-8 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm">
+          <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#D9CFC7]">
+            <div className="w-8 h-8 rounded-xl bg-[#EFE9E3] text-[#b39d82] flex items-center justify-center font-bold text-sm">
               1
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">Issuer Company Profile</h3>
-              <p className="text-xs text-slate-400">Legal identification and registered office details</p>
+              <h3 className="text-base font-bold text-[#1c1917]">Issuer Company Profile</h3>
+              <p className="text-xs text-[#78716c]">Legal identification and registered office details</p>
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Project / Filing Name *
               </label>
               <input
@@ -145,29 +145,29 @@ export const NewProject: React.FC = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. TechVista IPO 2026"
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Company Legal Name *
               </label>
               <div className="relative">
-                <Building2 className="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5" />
+                <Building2 className="w-4 h-4 text-[#a8a29e] absolute left-3.5 top-3.5" />
                 <input
                   type="text"
                   required
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="e.g. TechVista Solutions Pvt Ltd"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Corporate Identity Number (CIN)
               </label>
               <input
@@ -175,24 +175,24 @@ export const NewProject: React.FC = () => {
                 value={cin}
                 onChange={(e) => setCin(e.target.value)}
                 placeholder="U74999MH2020PTC123456"
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Date of Incorporation (Track Record Check)
               </label>
               <input
                 type="date"
                 value={incorporationDate}
                 onChange={(e) => setIncorporationDate(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Industry Sector
               </label>
               <input
@@ -200,12 +200,12 @@ export const NewProject: React.FC = () => {
                 value={industry}
                 onChange={(e) => setIndustry(e.target.value)}
                 placeholder="Information Technology"
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Registered Office Address
               </label>
               <input
@@ -213,7 +213,7 @@ export const NewProject: React.FC = () => {
                 value={registeredOffice}
                 onChange={(e) => setRegisteredOffice(e.target.value)}
                 placeholder="City, State"
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
             </div>
           </div>
@@ -221,19 +221,19 @@ export const NewProject: React.FC = () => {
 
         {/* Step 2: IPO Structure & Capital */}
         <Card glass>
-          <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
-            <div className="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm">
+          <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#D9CFC7]">
+            <div className="w-8 h-8 rounded-xl bg-[#EFE9E3] text-[#b39d82] flex items-center justify-center font-bold text-sm">
               2
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">IPO Structure & Capital Metrics</h3>
-              <p className="text-xs text-slate-400">Used for SEBI ICDR Rule Engine validation (OFS cap, ₹1Cr-₹25Cr capital range)</p>
+              <h3 className="text-base font-bold text-[#1c1917]">IPO Structure & Capital Metrics</h3>
+              <p className="text-xs text-[#78716c]">Used for SEBI ICDR Rule Engine validation (OFS cap, ₹1Cr-₹25Cr capital range)</p>
             </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Total Issue Size (₹ Crores)
               </label>
               <input
@@ -241,12 +241,12 @@ export const NewProject: React.FC = () => {
                 step="0.1"
                 value={issueSizeCr}
                 onChange={(e) => setIssueSizeCr(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Post-Issue Paid-Up Capital (₹Cr)
               </label>
               <input
@@ -254,13 +254,13 @@ export const NewProject: React.FC = () => {
                 step="0.1"
                 value={postCap}
                 onChange={(e) => setPostCap(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
-              <span className="text-[11px] text-slate-500 mt-1 block">SME Exchange limit: ₹1Cr to ₹25Cr</span>
+              <span className="text-[11px] text-[#a8a29e] mt-1 block">SME Exchange limit: ₹1Cr to ₹25Cr</span>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Net Worth (₹ Crores)
               </label>
               <input
@@ -268,179 +268,179 @@ export const NewProject: React.FC = () => {
                 step="0.1"
                 value={netWorth}
                 onChange={(e) => setNetWorth(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Price Band Low (₹)
               </label>
               <input
                 type="number"
                 value={priceBandLow}
                 onChange={(e) => setPriceBandLow(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Price Band High (₹)
               </label>
               <input
                 type="number"
                 value={priceBandHigh}
                 onChange={(e) => setPriceBandHigh(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Lot Size (Shares)
               </label>
               <input
                 type="number"
                 value={lotSize}
                 onChange={(e) => setLotSize(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
               <span className="text-[11px] text-emerald-400 mt-1 block">Min Application: ₹{(lotSize * priceBandHigh / 100000).toFixed(2)} Lakhs (Req: ≥₹2L)</span>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Pre-Issue Share Count
               </label>
               <input
                 type="number"
                 value={preShares}
                 onChange={(e) => setPreShares(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 Fresh Issue Shares
               </label>
               <input
                 type="number"
                 value={freshShares}
                 onChange={(e) => setFreshShares(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
                 OFS Shares (Offer for Sale)
               </label>
               <input
                 type="number"
                 value={ofsShares}
                 onChange={(e) => setOfsShares(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] transition-all"
               />
-              <span className="text-[11px] text-slate-500 mt-1 block">OFS Share: {((ofsShares / (freshShares + ofsShares || 1)) * 100).toFixed(1)}% (Max 20%)</span>
+              <span className="text-[11px] text-[#a8a29e] mt-1 block">OFS Share: {((ofsShares / (freshShares + ofsShares || 1)) * 100).toFixed(1)}% (Max 20%)</span>
             </div>
           </div>
         </Card>
 
         {/* Step 3: Financial Summary (3 FYs) */}
         <Card glass>
-          <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+          <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#D9CFC7]">
             <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">
               3
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">Financial Summary (Last 3 Financial Years — ₹ Crores)</h3>
-              <p className="text-xs text-slate-400">Required for Regulation 229 profitability verification (Positive EBITDA in ≥2 of 3 years)</p>
+              <h3 className="text-base font-bold text-[#1c1917]">Financial Summary (Last 3 Financial Years — ₹ Crores)</h3>
+              <p className="text-xs text-[#78716c]">Required for Regulation 229 profitability verification (Positive EBITDA in ≥2 of 3 years)</p>
             </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* FY1 */}
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-white/5 space-y-4">
-              <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider border-b border-white/5 pb-2">
+            <div className="p-4 rounded-2xl bg-[#EFE9E3] border border-[#D9CFC7] space-y-4">
+              <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider border-b border-[#D9CFC7] pb-2">
                 FY 2024-25 (Latest FY)
               </div>
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Revenue from Operations</label>
+                <label className="block text-xs text-[#78716c] mb-1">Revenue from Operations</label>
                 <input
                   type="number" step="0.1" value={rev1} onChange={(e) => setRev1(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-primary"
                 />
               </div>
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Operating Profit (EBITDA)</label>
+                <label className="block text-xs text-[#78716c] mb-1">Operating Profit (EBITDA)</label>
                 <input
                   type="number" step="0.1" value={ebitda1} onChange={(e) => setEbitda1(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-primary"
                 />
               </div>
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Profit After Tax (PAT)</label>
+                <label className="block text-xs text-[#78716c] mb-1">Profit After Tax (PAT)</label>
                 <input
                   type="number" step="0.1" value={pat1} onChange={(e) => setPat1(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-primary"
                 />
               </div>
             </div>
 
             {/* FY2 */}
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-white/5 space-y-4">
-              <div className="text-xs font-bold text-indigo-400 uppercase tracking-wider border-b border-white/5 pb-2">
+            <div className="p-4 rounded-2xl bg-[#EFE9E3] border border-[#D9CFC7] space-y-4">
+              <div className="text-xs font-bold text-[#b39d82] uppercase tracking-wider border-b border-[#D9CFC7] pb-2">
                 FY 2023-24 (Preceding Year 1)
               </div>
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Revenue from Operations</label>
+                <label className="block text-xs text-[#78716c] mb-1">Revenue from Operations</label>
                 <input
                   type="number" step="0.1" value={rev2} onChange={(e) => setRev2(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-primary"
                 />
               </div>
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Operating Profit (EBITDA)</label>
+                <label className="block text-xs text-[#78716c] mb-1">Operating Profit (EBITDA)</label>
                 <input
                   type="number" step="0.1" value={ebitda2} onChange={(e) => setEbitda2(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-primary"
                 />
               </div>
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Profit After Tax (PAT)</label>
+                <label className="block text-xs text-[#78716c] mb-1">Profit After Tax (PAT)</label>
                 <input
                   type="number" step="0.1" value={pat2} onChange={(e) => setPat2(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-primary"
                 />
               </div>
             </div>
 
             {/* FY3 */}
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-white/5 space-y-4">
-              <div className="text-xs font-bold text-purple-400 uppercase tracking-wider border-b border-white/5 pb-2">
+            <div className="p-4 rounded-2xl bg-[#EFE9E3] border border-[#D9CFC7] space-y-4">
+              <div className="text-xs font-bold text-[#b39d82] uppercase tracking-wider border-b border-[#D9CFC7] pb-2">
                 FY 2022-23 (Preceding Year 2)
               </div>
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Revenue from Operations</label>
+                <label className="block text-xs text-[#78716c] mb-1">Revenue from Operations</label>
                 <input
                   type="number" step="0.1" value={rev3} onChange={(e) => setRev3(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-primary"
                 />
               </div>
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Operating Profit (EBITDA)</label>
+                <label className="block text-xs text-[#78716c] mb-1">Operating Profit (EBITDA)</label>
                 <input
                   type="number" step="0.1" value={ebitda3} onChange={(e) => setEbitda3(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-primary"
                 />
               </div>
               <div>
-                <label className="block text-xs text-slate-400 mb-1">Profit After Tax (PAT)</label>
+                <label className="block text-xs text-[#78716c] mb-1">Profit After Tax (PAT)</label>
                 <input
                   type="number" step="0.1" value={pat3} onChange={(e) => setPat3(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800/80 border border-white/10 text-white font-mono text-sm focus:outline-none focus:border-primary"
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9CFC7] text-[#1c1917] font-mono text-sm focus:outline-none focus:border-primary"
                 />
               </div>
             </div>
@@ -452,14 +452,14 @@ export const NewProject: React.FC = () => {
           <button
             type="button"
             onClick={() => navigate('/dashboard')}
-            className="px-6 py-3.5 rounded-2xl text-sm font-bold bg-card hover:bg-card-hover border border-white/10 text-slate-300 transition-all"
+            className="px-6 py-3.5 rounded-2xl text-sm font-bold bg-card hover:bg-card-hover border border-[#D9CFC7] text-[#44403c] transition-all"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={loading}
-            className="px-8 py-3.5 rounded-2xl text-sm font-bold bg-gradient-to-r from-primary via-purple-600 to-pink-600 text-white shadow-glow hover:shadow-glow-lg transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 disabled:opacity-50"
+            className="px-8 py-3.5 rounded-2xl text-sm font-bold bg-gradient-to-r from-[#C9B59C] via-[#b39d82] to-[#a69279] text-white shadow-glow hover:shadow-glow-lg transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 disabled:opacity-50"
           >
             {loading ? (
               <span>Initializing Workspace...</span>

@@ -26,18 +26,18 @@ export const Card: React.FC<CardProps> = ({
       className={twMerge(
         'rounded-2xl p-6 border transition-all duration-300',
         glass 
-          ? 'bg-card/70 backdrop-blur-md border-white/10 shadow-glass' 
-          : 'bg-card border-white/5',
-        glow ? 'hover:border-primary/50 hover:shadow-glow' : 'hover:border-white/15',
+          ? 'bg-white/90 backdrop-blur-md border-[#D9CFC7] shadow-glass' 
+          : 'bg-white border-[#D9CFC7]',
+        glow ? 'hover:border-[#C9B59C] hover:shadow-glow' : 'hover:border-[#C9B59C]/60',
         className
       )}
       {...props}
     >
       {(title || action) && (
-        <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
+        <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#EFE9E3]">
           <div>
-            {title && <h3 className="text-lg font-bold text-slate-100 tracking-tight">{title}</h3>}
-            {subtitle && <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
+            {title && <h3 className="text-lg font-bold text-[#1c1917] tracking-tight">{title}</h3>}
+            {subtitle && <p className="text-xs text-[#78716c] mt-0.5">{subtitle}</p>}
           </div>
           {action && <div className="flex items-center gap-2">{action}</div>}
         </div>

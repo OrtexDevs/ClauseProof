@@ -22,11 +22,11 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 }) => {
   const percentage = Math.min(Math.max(Math.round((value / max) * 100), 0), 100);
 
-  let barColorClass = 'from-indigo-500 via-purple-500 to-pink-500';
+  let barColorClass = 'from-[#C9B59C] via-[#b39d82] to-[#a69279]';
   if (variant === 'auto') {
-    if (percentage >= 70) barColorClass = 'from-emerald-500 to-teal-400 shadow-emerald-500/20';
-    else if (percentage >= 40) barColorClass = 'from-amber-500 to-yellow-400 shadow-amber-500/20';
-    else barColorClass = 'from-rose-500 to-red-400 shadow-rose-500/20';
+    if (percentage >= 70) barColorClass = 'from-emerald-500 to-teal-400';
+    else if (percentage >= 40) barColorClass = 'from-amber-500 to-yellow-400';
+    else barColorClass = 'from-rose-500 to-red-400';
   } else if (variant === 'success') {
     barColorClass = 'from-emerald-500 to-teal-400';
   } else if (variant === 'warning') {
@@ -45,11 +45,11 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     <div className={twMerge('w-full', className)}>
       {(label || showValue) && (
         <div className="flex justify-between items-center mb-1.5 text-xs font-medium">
-          {label && <span className="text-slate-300">{label}</span>}
-          {showValue && <span className="text-slate-400 font-mono">{percentage}%</span>}
+          {label && <span style={{ color: '#44403c' }}>{label}</span>}
+          {showValue && <span className="font-mono" style={{ color: '#78716c' }}>{percentage}%</span>}
         </div>
       )}
-      <div className={twMerge('w-full bg-slate-800/80 rounded-full overflow-hidden p-0.5 border border-white/5', sizeStyles[size])}>
+      <div className={twMerge('w-full rounded-full overflow-hidden p-0.5', sizeStyles[size])} style={{ backgroundColor: '#EFE9E3', border: '1px solid #D9CFC7' }}>
         <div
           className={twMerge('h-full rounded-full bg-gradient-to-r transition-all duration-700 ease-out shadow-sm', barColorClass)}
           style={{ width: `${percentage}%` }}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export type BadgeVariant = 'pass' | 'fail' | 'warning' | 'info' | 'draft' | 'primary';
@@ -18,12 +17,12 @@ export const Badge: React.FC<BadgeProps> = ({
   icon 
 }) => {
   const variantStyles: Record<BadgeVariant, string> = {
-    pass: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
-    fail: 'bg-rose-500/15 text-rose-400 border-rose-500/30',
-    warning: 'bg-amber-500/15 text-amber-400 border-amber-500/30',
-    info: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
-    draft: 'bg-slate-700/40 text-slate-300 border-slate-600/40',
-    primary: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40 shadow-glow',
+    pass: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    fail: 'bg-rose-50 text-rose-700 border-rose-200',
+    warning: 'bg-amber-50 text-amber-700 border-amber-200',
+    info: 'bg-blue-50 text-blue-700 border-blue-200',
+    draft: 'bg-[#EFE9E3] text-[#78716c] border-[#D9CFC7]',
+    primary: 'bg-[#EFE9E3] text-[#8c7a65] border-[#C9B59C] shadow-sm',
   };
 
   return (

@@ -45,11 +45,11 @@ export const ProjectDetail: React.FC<{ onProjectChange?: (p: Project) => void }>
   }, [id, onProjectChange]);
 
   if (loading) {
-    return <div className="h-96 rounded-3xl bg-slate-800/40 animate-pulse border border-white/5" />;
+    return <div className="h-96 rounded-3xl bg-[#EFE9E3] animate-pulse border border-[#D9CFC7]" />;
   }
 
   if (!project) {
-    return <div className="text-center py-20 text-slate-400">IPO Project not found.</div>;
+    return <div className="text-center py-20 text-[#78716c]">IPO Project not found.</div>;
   }
 
   const completedCount = sections.filter(s => s.is_completed).length;
@@ -65,11 +65,11 @@ export const ProjectDetail: React.FC<{ onProjectChange?: (p: Project) => void }>
             <Badge variant={project.status === 'approved' ? 'pass' : 'draft'} className="uppercase">
               {project.status.replace('_', ' ')}
             </Badge>
-            <span className="text-xs text-slate-400 font-mono">CIN: {project.cin || 'N/A'}</span>
+            <span className="text-xs text-[#78716c] font-mono">CIN: {project.cin || 'N/A'}</span>
           </div>
-          <h1 className="text-3xl font-black text-white tracking-tight">{project.name}</h1>
-          <div className="flex items-center gap-2 text-sm text-slate-400 mt-1">
-            <Building2 className="w-4 h-4 text-indigo-400" />
+          <h1 className="text-3xl font-black text-[#1c1917] tracking-tight">{project.name}</h1>
+          <div className="flex items-center gap-2 text-sm text-[#78716c] mt-1">
+            <Building2 className="w-4 h-4 text-[#b39d82]" />
             <span>{project.company_name}</span>
             <span>·</span>
             <span>{project.industry}</span>
@@ -115,22 +115,24 @@ export const ProjectDetail: React.FC<{ onProjectChange?: (p: Project) => void }>
     </div>
   </div>`;
               
-              const container = document.createElement('div');
-              container.innerHTML = htmlContent;
-              
-              const opt = {
-                margin:       15,
-                filename:     `${project.company_name.replace(/\s+/g, '_')}_DRHP_ScheduleVI_Package.pdf`,
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-              };
-              
-              // Dynamically import html2pdf so it doesn't block rendering
-              import('html2pdf.js').then((html2pdfModule) => {
-                const html2pdf = html2pdfModule.default || html2pdfModule;
-                html2pdf().set(opt).from(container).save();
-              });
+              const printWindow = window.open('', '_blank');
+              if (printWindow) {
+                printWindow.document.write(`<!DOCTYPE html><html><head><title>${project.company_name} DRHP Package</title><meta charset="utf-8"><style>body{font-family:system-ui,-apple-system,sans-serif;margin:0;padding:20px;color:#1e293b;background:#ffffff;}@media print{body{padding:0;}@page{margin:15mm;}}</style></head><body>${htmlContent}</body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); }, 250);
+              } else {
+                // Fallback if popup blocked: download as standalone HTML file
+                const blob = new Blob([`<!DOCTYPE html><html><head><title>${project.company_name} DRHP Package</title><meta charset="utf-8"><style>body{font-family:system-ui,-apple-system,sans-serif;margin:40px auto;max-width:900px;color:#1e293b;background:#ffffff;line-height:1.6;}</style></head><body>${htmlContent}</body></html>`], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${project.company_name.replace(/\s+/g, '_')}_DRHP_ScheduleVI_Package.html`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+              }
             }}
             className="px-4 py-3 rounded-xl text-sm font-bold bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 transition-all flex items-center gap-2 shadow-sm"
           >
@@ -139,14 +141,14 @@ export const ProjectDetail: React.FC<{ onProjectChange?: (p: Project) => void }>
           </button>
           <button
             onClick={() => navigate(`/project/${project.id}/editor`)}
-            className="px-5 py-3 rounded-xl text-sm font-bold bg-card hover:bg-card-hover border border-white/10 text-white transition-all flex items-center gap-2"
+            className="px-5 py-3 rounded-xl text-sm font-bold bg-card hover:bg-card-hover border border-[#D9CFC7] text-[#1c1917] transition-all flex items-center gap-2"
           >
             <Sparkles className="w-4 h-4 text-amber-400" />
             <span>Open Delta Wizard</span>
           </button>
           <button
             onClick={() => navigate(`/project/${project.id}/compliance`)}
-            className="px-6 py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-primary via-purple-600 to-pink-600 text-white shadow-glow hover:shadow-glow-lg transition-all flex items-center gap-2"
+            className="px-6 py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-[#C9B59C] via-[#b39d82] to-[#a69279] text-white shadow-glow hover:shadow-glow-lg transition-all flex items-center gap-2"
           >
             <ShieldCheck className="w-4 h-4" />
             <span>Run Rule Engine</span>
@@ -157,32 +159,32 @@ export const ProjectDetail: React.FC<{ onProjectChange?: (p: Project) => void }>
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
         <Card glass>
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">SEBI ICDR Compliance</div>
-          <div className="text-3xl font-black text-white tracking-tight mb-3">{score}%</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-[#78716c] mb-2">SEBI ICDR Compliance</div>
+          <div className="text-3xl font-black text-[#1c1917] tracking-tight mb-3">{score}%</div>
           <ProgressBar value={score} showValue={false} size="sm" />
         </Card>
 
         <Card glass>
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Schedule VI Completion</div>
-          <div className="text-3xl font-black text-white tracking-tight mb-3">{completedCount}/{sections.length}</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-[#78716c] mb-2">Schedule VI Completion</div>
+          <div className="text-3xl font-black text-[#1c1917] tracking-tight mb-3">{completedCount}/{sections.length}</div>
           <ProgressBar value={completionPct} variant="primary" showValue={false} size="sm" />
         </Card>
 
         <Card glass>
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Issue Size Allocation</div>
-          <div className="text-3xl font-black text-white tracking-tight">₹{project.issue_size_cr || '—'} <span className="text-sm font-normal text-slate-400">Cr</span></div>
-          <div className="text-xs text-slate-400 mt-2">Paid-Up: ₹{project.post_issue_paid_up_capital} Cr</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-[#78716c] mb-2">Issue Size Allocation</div>
+          <div className="text-3xl font-black text-[#1c1917] tracking-tight">₹{project.issue_size_cr || '—'} <span className="text-sm font-normal text-[#78716c]">Cr</span></div>
+          <div className="text-xs text-[#78716c] mt-2">Paid-Up: ₹{project.post_issue_paid_up_capital} Cr</div>
         </Card>
 
         <Card glass>
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Audit Trail & Sign-Offs</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-[#78716c] mb-2">Audit Trail & Sign-Offs</div>
           <div className="text-xl font-bold text-emerald-400 mt-1 flex items-center gap-1.5">
             <CheckCircle2 className="w-5 h-5" />
             <span>SHA-256 Active</span>
           </div>
           <button
             onClick={() => navigate(`/project/${project.id}/audit`)}
-            className="text-xs text-indigo-400 hover:text-indigo-300 font-semibold mt-3 flex items-center gap-1"
+            className="text-xs text-[#b39d82] hover:text-[#8c7a65] font-semibold mt-3 flex items-center gap-1"
           >
             <span>View Hash Logs</span>
             <ArrowRight className="w-3 h-3" />
@@ -192,13 +194,13 @@ export const ProjectDetail: React.FC<{ onProjectChange?: (p: Project) => void }>
 
       {/* Schedule VI Sections List */}
       <Card glass>
-        <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+        <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#D9CFC7]">
           <div>
-            <h3 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-              <FileText className="w-5 h-5 text-indigo-400" />
+            <h3 className="text-lg font-bold text-[#1c1917] tracking-tight flex items-center gap-2">
+              <FileText className="w-5 h-5 text-[#b39d82]" />
               <span>Schedule VI, Part A — Mandatory Disclosure Sections</span>
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-[#78716c] mt-0.5">
               Select any section to launch the Delta Wizard editor and review built-in SEBI guidance
             </p>
           </div>
@@ -218,23 +220,23 @@ export const ProjectDetail: React.FC<{ onProjectChange?: (p: Project) => void }>
                   isDone 
                     ? 'bg-emerald-950/10 border-emerald-500/30 hover:border-emerald-500/60' 
                     : isInProgress 
-                      ? 'bg-slate-900/80 border-indigo-500/30 hover:border-indigo-500/60' 
-                      : 'bg-slate-900/40 border-white/5 hover:border-white/15'
+                      ? 'bg-[#F9F8F6] border-[#D9CFC7] hover:border-indigo-500/60' 
+                      : 'bg-[#EFE9E3] border-[#D9CFC7] hover:border-[#D9CFC7]'
                 }`}
               >
                 <div className="flex items-center gap-3.5 min-w-0">
                   <div className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold shrink-0 ${
                     isDone 
                       ? 'bg-emerald-500/20 text-emerald-400' 
-                      : 'bg-slate-800 text-slate-400 group-hover:bg-primary/20 group-hover:text-primary-light transition-colors'
+                      : 'bg-[#EFE9E3] text-[#78716c] group-hover:bg-primary/20 group-hover:text-primary-light transition-colors'
                   }`}>
                     {sec.section_order}
                   </div>
                   <div className="min-w-0">
-                    <div className="text-sm font-bold text-slate-200 group-hover:text-white truncate">
+                    <div className="text-sm font-bold text-[#1c1917] group-hover:text-[#44403c] truncate">
                       {sec.section_name}
                     </div>
-                    <div className="text-[11px] text-slate-500 font-mono truncate mt-0.5">
+                    <div className="text-[11px] text-[#a8a29e] font-mono truncate mt-0.5">
                       {sec.section_code} · v{sec.version}
                     </div>
                   </div>
@@ -248,7 +250,7 @@ export const ProjectDetail: React.FC<{ onProjectChange?: (p: Project) => void }>
                   ) : (
                     <Badge variant="draft">Pending</Badge>
                   )}
-                  <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-slate-300 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-[#a8a29e] group-hover:text-[#44403c] group-hover:translate-x-1 transition-all" />
                 </div>
               </div>
             );

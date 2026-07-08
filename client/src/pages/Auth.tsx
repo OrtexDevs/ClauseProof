@@ -38,31 +38,39 @@ export const Auth: React.FC = () => {
     }
   };
 
+  const inputStyle: React.CSSProperties = {
+    backgroundColor: '#ffffff',
+    border: '1px solid #D9CFC7',
+    color: '#1c1917',
+  };
+
+  const focusClass = "w-full px-4 py-3 rounded-xl text-sm transition-all outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C]";
+
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden flex items-center justify-center p-6">
+    <div className="min-h-screen relative overflow-hidden flex items-center justify-center p-6" style={{ backgroundColor: '#F9F8F6' }}>
       {/* Background Glows */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none animate-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl pointer-events-none animate-float" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl pointer-events-none animate-float" style={{ backgroundColor: 'rgba(201, 181, 156, 0.2)' }} />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl pointer-events-none animate-float" style={{ backgroundColor: 'rgba(239, 233, 227, 0.35)', animationDelay: '3s' }} />
 
       <div className="relative z-10 w-full max-w-md">
         {/* Brand Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white shadow-glow mb-4">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl text-white shadow-glow mb-4" style={{ background: 'linear-gradient(135deg, #C9B59C, #a69279)' }}>
             <Scale className="w-7 h-7" />
           </div>
-          <h2 className="text-2xl font-black text-white tracking-tight">
+          <h2 className="text-2xl font-black tracking-tight" style={{ color: '#1c1917' }}>
             {mode === 'login' ? 'Welcome Back to ClauseProof' : 'Initialize RegTech Account'}
           </h2>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm mt-1" style={{ color: '#78716c' }}>
             {mode === 'login' ? 'Sign in to access your SME IPO compliance workspace' : 'Create your multi-party IPO document drafting profile'}
           </p>
         </div>
 
         {/* Auth Card */}
-        <div className="bg-card/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
+        <div className="rounded-3xl p-8 shadow-glass" style={{ backgroundColor: '#ffffff', border: '1px solid #D9CFC7' }}>
           {error && (
-            <div className="mb-6 p-3 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-medium flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0" />
+            <div className="mb-6 p-3 rounded-xl text-xs font-medium flex items-center gap-2" style={{ backgroundColor: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', color: '#dc2626' }}>
+              <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#ef4444' }} />
               <span>{error}</span>
             </div>
           )}
@@ -71,7 +79,7 @@ export const Auth: React.FC = () => {
             {mode === 'register' && (
               <>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#78716c' }}>
                     Full Name
                   </label>
                   <input
@@ -80,36 +88,39 @@ export const Auth: React.FC = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Adv. Ananya Desai"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                    className={focusClass}
+                    style={{ ...inputStyle, '--tw-placeholder-color': '#a8a29e' } as any}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#78716c' }}>
                     Organization / Legal Firm
                   </label>
                   <div className="relative">
-                    <Building2 className="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5" />
+                    <Building2 className="w-4 h-4 absolute left-3.5 top-3.5" style={{ color: '#a8a29e' }} />
                     <input
                       type="text"
                       value={organization}
                       onChange={(e) => setOrganization(e.target.value)}
                       placeholder="e.g. LexCorp Advocates & Solicitors"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                      className={focusClass + " pl-10"}
+                      style={inputStyle}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#78716c' }}>
                     Role in IPO Lifecycle
                   </label>
                   <div className="relative">
-                    <UserCheck className="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5" />
+                    <UserCheck className="w-4 h-4 absolute left-3.5 top-3.5" style={{ color: '#a8a29e' }} />
                     <select
                       value={role}
                       onChange={(e) => setRole(e.target.value as UserRole)}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none"
+                      className={focusClass + " pl-10 appearance-none"}
+                      style={inputStyle}
                     >
                       <option value="promoter">Promoter / SME Issuer</option>
                       <option value="merchant_banker">Merchant Banker (Lead Manager)</option>
@@ -122,7 +133,7 @@ export const Auth: React.FC = () => {
             )}
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#78716c' }}>
                 Work Email Address
               </label>
               <input
@@ -131,12 +142,13 @@ export const Auth: React.FC = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@company.com"
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className={focusClass}
+                style={inputStyle}
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#78716c' }}>
                 Password
               </label>
               <input
@@ -145,14 +157,16 @@ export const Auth: React.FC = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                className={focusClass}
+                style={inputStyle}
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-2 py-3.5 rounded-xl text-sm font-bold bg-gradient-to-r from-primary via-purple-600 to-pink-600 text-white shadow-glow hover:shadow-glow-lg transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full mt-2 py-3.5 rounded-xl text-sm font-bold text-white shadow-glow hover:shadow-glow-lg transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-50"
+              style={{ background: 'linear-gradient(135deg, #C9B59C, #b39d82, #a69279)' }}
             >
               {loading ? (
                 <span>Authenticating...</span>
@@ -165,11 +179,12 @@ export const Auth: React.FC = () => {
             </button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-white/10 text-center">
+          <div className="mt-6 pt-6 text-center" style={{ borderTop: '1px solid #EFE9E3' }}>
             <button
               type="button"
               onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
-              className="text-xs text-slate-400 hover:text-indigo-400 font-medium transition-colors"
+              className="text-xs font-medium transition-colors hover:opacity-80"
+              style={{ color: '#b39d82' }}
             >
               {mode === 'login' 
                 ? "New to ClauseProof? Create an account" 
@@ -179,11 +194,11 @@ export const Auth: React.FC = () => {
         </div>
 
         {/* Demo Credentials Hint */}
-        <div className="mt-6 p-4 rounded-2xl bg-slate-900/60 border border-white/5 text-center">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-indigo-400 flex items-center justify-center gap-1.5 mb-1">
+        <div className="mt-6 p-4 rounded-2xl text-center" style={{ backgroundColor: '#EFE9E3', border: '1px solid #D9CFC7' }}>
+          <div className="text-[11px] font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 mb-1" style={{ color: '#b39d82' }}>
             <Shield className="w-3.5 h-3.5" /> Demo Environment Notice
           </div>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs" style={{ color: '#57534e' }}>
             You can sign in directly with the default demo promoter credentials or register any email to test multi-role workflows.
           </p>
         </div>

@@ -24,16 +24,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentProject }) => {
   };
 
   return (
-    <header className="h-16 bg-card/70 backdrop-blur-md border-b border-white/10 sticky top-0 z-40 px-8 flex items-center justify-between shadow-glass">
+    <header className="h-16 backdrop-blur-md sticky top-0 z-40 px-8 flex items-center justify-between shadow-glass" style={{ backgroundColor: 'rgba(255,255,255,0.85)', borderBottom: '1px solid #D9CFC7' }}>
       {/* Breadcrumb / Title */}
       <div className="flex items-center gap-3">
-        <h1 className="text-base font-bold text-slate-100 tracking-tight flex items-center gap-2">
+        <h1 className="text-base font-bold tracking-tight flex items-center gap-2" style={{ color: '#1c1917' }}>
           {getPageTitle()}
         </h1>
         {currentProject && location.pathname !== '/dashboard' && (
-          <div className="hidden md:flex items-center gap-2 border-l border-white/10 pl-3">
-            <Building2 className="w-4 h-4 text-indigo-400" />
-            <span className="text-xs font-semibold text-slate-300">{currentProject.company_name}</span>
+          <div className="hidden md:flex items-center gap-2 pl-3" style={{ borderLeft: '1px solid #D9CFC7' }}>
+            <Building2 className="w-4 h-4" style={{ color: '#b39d82' }} />
+            <span className="text-xs font-semibold" style={{ color: '#44403c' }}>{currentProject.company_name}</span>
             <Badge variant={currentProject.status === 'approved' ? 'pass' : 'draft'} className="ml-1 text-[10px]">
               {currentProject.status.toUpperCase()}
             </Badge>
@@ -44,22 +44,22 @@ export const Navbar: React.FC<NavbarProps> = ({ currentProject }) => {
       {/* Right Actions */}
       <div className="flex items-center gap-4">
         {/* TechSprint Badge */}
-        <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-medium text-indigo-300">
-          <Shield className="w-3.5 h-3.5 text-indigo-400" />
+        <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: '#EFE9E3', border: '1px solid #D9CFC7', color: '#8c7a65' }}>
+          <Shield className="w-3.5 h-3.5" style={{ color: '#b39d82' }} />
           <span>SEBI TechSprint Problem Statement 4</span>
         </div>
 
         {/* AI Grounded Indicator */}
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-medium text-emerald-400">
-          <Sparkles className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', color: '#059669' }}>
+          <Sparkles className="w-3.5 h-3.5 animate-pulse" style={{ color: '#10b981' }} />
           <span>Grounded in ICDR 2025</span>
         </div>
 
         {/* Notifications */}
-        <button className="w-8 h-8 rounded-full bg-slate-800/80 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white transition-colors relative">
+        <button className="w-8 h-8 rounded-full flex items-center justify-center transition-colors relative" style={{ backgroundColor: '#EFE9E3', border: '1px solid #D9CFC7', color: '#78716c' }}>
           <Bell className="w-4 h-4" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary animate-ping" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary" />
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#C9B59C] animate-ping" />
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#C9B59C]" />
         </button>
       </div>
     </header>

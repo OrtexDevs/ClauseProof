@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   FolderPlus, TrendingUp, ShieldCheck, FileText,
-  Clock, ArrowRight, Building2, AlertTriangle
+  Clock, ArrowRight, Building2, AlertTriangle, Sparkles
 } from 'lucide-react';
 import { apiService } from '../services/api';
 import { Project } from '../types';
@@ -34,22 +34,22 @@ export const Dashboard: React.FC = () => {
   return (
     <div className="space-y-10 text-[#16233D]">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-[#E4E2D8]">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-[#E4E2D8] font-mono text-[11px] uppercase tracking-widest text-[#2E7D8C] font-semibold mb-3 shadow-subtle">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D8C]" />
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-[#E4E2D8]/80">
+        <div className="stagger-fade-up" style={{ '--i': 1 } as React.CSSProperties}>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-[#E4E2D8] font-mono text-[11px] uppercase tracking-widest text-[#2E7D8C] font-bold mb-3 shadow-subtle">
+            <Sparkles className="w-3.5 h-3.5 text-[#2E7D8C]" strokeWidth={2} />
             <span>SEBI TechSprint PS-4 RegTech Ledger</span>
           </div>
-          <h1 className="font-heading text-3xl font-bold tracking-tight text-[#16233D]">
+          <h1 className="font-heading text-3xl sm:text-4xl font-extrabold tracking-tight text-[#16233D]">
             IPO Compliance Dashboard
           </h1>
           <p className="font-sans text-sm text-[#4A5568] mt-1.5 max-w-xl leading-relaxed">
-            Deterministic rule validation against SEBI ICDR 2025. Manage your DRHP filings with compliance-as-code precision.
+            Deterministic rule validation against SEBI ICDR 2026. Manage your DRHP filings with compliance-as-code precision.
           </p>
         </div>
         <button
           onClick={() => navigate('/projects/new')}
-          className="px-5 py-2.5 rounded-xl text-xs font-mono font-medium uppercase tracking-wider bg-[#16233D] text-white hover:-translate-y-0.5 hover:shadow-subtle transition-all flex items-center gap-2 shrink-0"
+          className="px-5 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-[#16233D] text-white hover:bg-[#2E7D8C] shadow-card transition-all flex items-center justify-center gap-2 shrink-0 btn-press"
         >
           <FolderPlus className="w-4 h-4" strokeWidth={2} />
           New Filing
@@ -57,37 +57,40 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-white rounded-xl border border-[#E4E2D8] shadow-subtle divide-y sm:divide-y-0 sm:divide-x divide-[#E4E2D8] overflow-hidden">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-white rounded-xl border border-[#E4E2D8] shadow-card divide-y sm:divide-y-0 sm:divide-x divide-[#E4E2D8]/80 overflow-hidden stagger-fade-up" style={{ '--i': 2 } as React.CSSProperties}>
         {[
           { label: 'Active Filings', value: String(projects.length), sub: 'Schedule VI Mapped', icon: FileText, color: 'text-[#2E7D8C]' },
           { label: 'Avg. Compliance', value: `${avgScore}%`, sub: '18+ ICDR Rules', icon: ShieldCheck, color: 'text-[#39A0B0]' },
           { label: 'Total Issue Size', value: `₹${totalIssueSize.toFixed(1)} Cr`, sub: 'SME Exchange', icon: TrendingUp, color: 'text-[#C9762E]' },
           { label: 'Audit Integrity', value: 'Verified', sub: 'SHA-256 Chain', icon: ShieldCheck, color: 'text-[#2E7D8C]' },
         ].map((s, i) => (
-          <div key={i} className="p-6 stagger-fade-up" style={{ '--i': i } as React.CSSProperties}>
+          <div key={i} className="p-6 hover:bg-[#FAFAF7]/60 transition-colors cursor-default">
             <div className="flex items-center justify-between mb-2">
-              <span className="font-mono text-[11px] uppercase tracking-widest font-semibold text-[#8A93A6]">{s.label}</span>
-              <s.icon className={`w-4 h-4 ${s.color}`} strokeWidth={1.8} />
+              <span className="font-mono text-[11px] uppercase tracking-widest font-bold text-[#8A93A6]">{s.label}</span>
+              <s.icon className={`w-4 h-4 ${s.color}`} strokeWidth={2} />
             </div>
-            <div className="text-3xl font-bold tracking-tight font-mono text-[#16233D]">{s.value}</div>
-            <div className="font-sans text-xs text-[#4A5568] mt-1">{s.sub}</div>
+            <div className="text-3xl font-extrabold tracking-tight font-mono text-[#16233D]">{s.value}</div>
+            <div className="font-sans text-xs text-[#4A5568] mt-1 font-medium">{s.sub}</div>
           </div>
         ))}
       </div>
 
       {/* Projects */}
-      <div>
+      <div className="stagger-fade-up" style={{ '--i': 3 } as React.CSSProperties}>
         <div className="flex items-center justify-between mb-6">
           <div>
-            <div className="font-mono text-[11px] uppercase tracking-widest font-semibold text-[#2E7D8C] mb-1">SECTION // ACTIVE LEDGERS</div>
-            <h2 className="font-heading text-xl font-bold text-[#16233D] tracking-tight">IPO Filing Projects</h2>
+            <div className="font-mono text-[11px] uppercase tracking-widest font-bold text-[#2E7D8C] mb-1 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D8C]" />
+              SECTION // ACTIVE LEDGERS
+            </div>
+            <h2 className="font-heading text-xl font-extrabold text-[#16233D] tracking-tight">IPO Filing Projects</h2>
           </div>
         </div>
 
         {loading ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[0, 1, 2].map(i => (
-              <div key={i} className="rounded-xl border border-[#E4E2D8] bg-white p-6 space-y-4 animate-pulse">
+              <div key={i} className="rounded-xl border border-[#E4E2D8] bg-white p-6 space-y-4 animate-pulse shadow-subtle">
                 <div className="h-4 w-24 bg-[#FAFAF7] rounded" />
                 <div className="h-6 w-44 bg-[#FAFAF7] rounded" />
                 <div className="h-20 bg-[#FAFAF7] rounded-lg" />
@@ -99,9 +102,9 @@ export const Dashboard: React.FC = () => {
             ))}
           </div>
         ) : projects.length === 0 ? (
-          <div className="text-center py-20 px-6 bg-white rounded-xl border border-[#E4E2D8] shadow-subtle">
-            <div className="w-12 h-12 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-center mx-auto mb-5">
-              <FolderPlus className="w-6 h-6 text-[#2E7D8C]" strokeWidth={1.8} />
+          <div className="text-center py-20 px-6 bg-white rounded-xl border border-[#E4E2D8] shadow-card">
+            <div className="w-12 h-12 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-center mx-auto mb-5 shadow-subtle">
+              <FolderPlus className="w-6 h-6 text-[#2E7D8C]" strokeWidth={2} />
             </div>
             <h3 className="font-heading text-lg font-bold text-[#16233D] mb-1.5">No IPO Projects Initialized</h3>
             <p className="font-sans text-xs text-[#4A5568] max-w-md mx-auto mb-6 leading-relaxed">
@@ -109,7 +112,7 @@ export const Dashboard: React.FC = () => {
             </p>
             <button
               onClick={() => navigate('/projects/new')}
-              className="px-5 py-2.5 rounded-xl text-xs font-mono font-medium uppercase tracking-wider bg-[#16233D] text-white hover:-translate-y-0.5 hover:shadow-subtle transition-all inline-flex items-center gap-2"
+              className="px-5 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-[#16233D] text-white hover:bg-[#2E7D8C] shadow-card transition-all inline-flex items-center gap-2 btn-press"
             >
               <FolderPlus className="w-4 h-4" strokeWidth={2} /> Create First Project
             </button>
@@ -124,8 +127,7 @@ export const Dashboard: React.FC = () => {
                 <div
                   key={p.id}
                   onClick={() => navigate(`/project/${p.id}`)}
-                  className="group cursor-pointer bg-white rounded-xl border border-[#E4E2D8] p-6 shadow-subtle hover:bg-[#FAFAF7]/60 transition-all duration-200 flex flex-col justify-between stagger-fade-up"
-                  style={{ '--i': idx } as React.CSSProperties}
+                  className="group cursor-pointer bg-white rounded-xl border border-[#E4E2D8] p-6 shadow-card card-interactive flex flex-col justify-between transition-all duration-300 relative overflow-hidden"
                 >
                   <div>
                     <div className="flex items-start justify-between gap-2 mb-4">
@@ -140,13 +142,13 @@ export const Dashboard: React.FC = () => {
                           {p.name}
                         </h3>
                         <div className="flex items-center gap-1.5 text-xs text-[#4A5568] mt-1 font-sans">
-                          <Building2 className="w-3.5 h-3.5 text-[#8A93A6] shrink-0" strokeWidth={1.8} />
+                          <Building2 className="w-3.5 h-3.5 text-[#8A93A6] shrink-0" strokeWidth={2} />
                           <span className="truncate">{p.company_name}</span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3 p-3.5 rounded-lg bg-[#FAFAF7] border border-[#E4E2D8] mb-6">
+                    <div className="grid grid-cols-2 gap-3 p-3.5 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8]/80 mb-6 shadow-subtle">
                       <div>
                         <div className="font-mono text-[10px] uppercase font-bold text-[#8A93A6]">Issue Size</div>
                         <div className="font-mono text-sm font-bold text-[#16233D] mt-0.5">{p.issue_size_cr ? `₹${p.issue_size_cr} Cr` : '—'}</div>
@@ -163,12 +165,12 @@ export const Dashboard: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-[#E4E2D8] flex items-center justify-between font-mono text-xs text-[#8A93A6]">
+                  <div className="pt-4 border-t border-[#E4E2D8]/80 flex items-center justify-between font-mono text-xs text-[#8A93A6]">
                     <div className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5" strokeWidth={1.8} />
+                      <Clock className="w-3.5 h-3.5" strokeWidth={2} />
                       <span>Updated {new Date(p.updated_at).toLocaleDateString()}</span>
                     </div>
-                    <div className="flex items-center gap-1 text-[#2E7D8C] font-semibold group-hover:translate-x-1 transition-transform">
+                    <div className="flex items-center gap-1 text-[#2E7D8C] font-bold group-hover:translate-x-1.5 transition-transform">
                       <span>Open Ledger</span>
                       <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} />
                     </div>
@@ -181,12 +183,12 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* Alert */}
-      <div className="flex items-start gap-4 p-6 rounded-xl bg-white border border-[#E4E2D8] shadow-subtle">
-        <div className="w-10 h-10 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-center shrink-0 mt-0.5">
-          <AlertTriangle className="w-5 h-5 text-[#C9762E]" strokeWidth={1.8} />
+      <div className="flex items-start gap-4 p-6 rounded-xl bg-white border border-[#E4E2D8] shadow-card stagger-fade-up" style={{ '--i': 4 } as React.CSSProperties}>
+        <div className="w-10 h-10 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-center shrink-0 mt-0.5 shadow-subtle">
+          <AlertTriangle className="w-5 h-5 text-[#C9762E]" strokeWidth={2} />
         </div>
         <div>
-          <div className="font-mono text-[11px] uppercase tracking-widest font-semibold text-[#C9762E] mb-1">REGULATORY NOTICE</div>
+          <div className="font-mono text-[11px] uppercase tracking-widest font-bold text-[#C9762E] mb-1">REGULATORY NOTICE</div>
           <h3 className="font-heading text-base font-bold text-[#16233D]">SEBI 2025/2026 SME Listing Alert</h3>
           <p className="font-sans text-xs text-[#4A5568] mt-1 leading-relaxed">
             Recent ICDR amendments mandate that companies converting from a proprietorship/LLP must show at least <strong className="text-[#16233D]">1 full financial year post-conversion</strong> before filing the DRHP.

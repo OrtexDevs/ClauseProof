@@ -6,6 +6,7 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   glow?: boolean;
   glass?: boolean;
+  interactive?: boolean;
   title?: string;
   subtitle?: string;
   action?: React.ReactNode;
@@ -16,6 +17,7 @@ export const Card: React.FC<CardProps> = ({
   className,
   glow = false,
   glass = false,
+  interactive = false,
   title,
   subtitle,
   action,
@@ -24,29 +26,31 @@ export const Card: React.FC<CardProps> = ({
   return (
     <div
       className={twMerge(
-        'rounded-xl p-6 bg-white border border-[#E4E2D8] shadow-[0_1px_0_rgba(22,35,61,0.03)] transition-colors duration-200 text-[#16233D] hover:bg-[#FAFAF7]/60',
+        'rounded-xl p-6 bg-white border border-[#E4E2D8] shadow-card text-[#16233D] transition-all duration-300 relative overflow-hidden',
+        glass && 'glass-panel',
+        (interactive || props.onClick) && 'card-interactive cursor-pointer',
         className
       )}
       {...props}
     >
       {(title || action) && (
-        <div className="flex items-center justify-between mb-5 pb-4 border-b border-[#E4E2D8]">
+        <div className="flex items-center justify-between mb-5 pb-4 border-b border-[#E4E2D8]/80 relative z-10">
           <div>
             {title && (
-              <h3 className="font-heading text-lg font-bold text-[#16233D] tracking-tight">
+              <h3 className="font-heading text-lg font-bold text-[#16233D] tracking-tight flex items-center gap-2">
                 {title}
               </h3>
             )}
             {subtitle && (
-              <p className="font-sans text-xs text-[#4A5568] mt-1">
+              <p className="font-sans text-xs text-[#4A5568] mt-1 leading-relaxed">
                 {subtitle}
               </p>
             )}
           </div>
-          {action && <div className="flex items-center gap-2.5">{action}</div>}
+          {action && <div className="flex items-center gap-2.5 shrink-0">{action}</div>}
         </div>
       )}
-      {children}
+      <div className="relative z-10">{children}</div>
     </div>
   );
 };

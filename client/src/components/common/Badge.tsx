@@ -11,21 +11,21 @@ interface BadgeProps {
 }
 
 const styles: Record<BadgeVariant, string> = {
-  pass:    'bg-[#2E7D8C]/10 text-[#2E7D8C] border-[#2E7D8C]/30',
-  fail:    'bg-[#C9762E]/10 text-[#C9762E] border-[#C9762E]/30',
-  warning: 'bg-[#C9762E]/10 text-[#C9762E] border-[#C9762E]/30',
-  info:    'bg-[#39A0B0]/10 text-[#39A0B0] border-[#39A0B0]/30',
-  draft:   'bg-[#F5F5F0] text-[#4A5568] border-[#E4E2D8]',
-  primary: 'bg-[#16233D] text-white border-[#16233D]',
+  pass:    'bg-[#086F83]/12 text-[#086F83] border-[#086F83]/40 font-bold',
+  fail:    'bg-[#C2590E]/12 text-[#C2590E] border-[#C2590E]/40 font-bold',
+  warning: 'bg-[#C2590E]/12 text-[#C2590E] border-[#C2590E]/40 font-bold',
+  info:    'bg-[#0B8CA5]/12 text-[#0B8CA5] border-[#0B8CA5]/40 font-bold',
+  draft:   'bg-[#EEF0EB] text-[#25314C] border-[#DCE0D6] font-bold',
+  primary: 'bg-[#0B1120] text-white border-[#0B1120] font-bold shadow-subtle',
 };
 
 export const Badge: React.FC<BadgeProps> = ({ variant = 'draft', children, className, icon }) => (
   <span className={twMerge(
-    'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md font-mono text-[11px] font-medium uppercase tracking-wider border',
+    'inline-flex items-center gap-1.5 px-3 py-1 rounded-md font-mono text-xs uppercase tracking-wider border shadow-subtle transition-all duration-200',
     styles[variant],
     className
   )}>
-    {icon && <span className="w-3 h-3 flex items-center justify-center shrink-0">{icon}</span>}
+    {icon && <span className="w-3.5 h-3.5 flex items-center justify-center shrink-0">{icon}</span>}
     {children}
   </span>
 );

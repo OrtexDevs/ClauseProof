@@ -57,7 +57,7 @@ export const Workspace: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="h-96 rounded-xl bg-white border border-[#E4E2D8] animate-pulse" />;
+  if (loading) return <div className="h-96 rounded-2xl bg-white border border-[#E4E2D8] animate-pulse" />;
   if (!project) return <div className="text-center py-20 text-[#8A93A6] font-mono text-xs">Project not found.</div>;
 
   return (
@@ -67,7 +67,7 @@ export const Workspace: React.FC = () => {
         <div className="flex items-center gap-3.5">
           <button
             onClick={() => navigate(`/project/${project.id}`)}
-            className="w-10 h-10 rounded-xl bg-white border border-[#E4E2D8] flex items-center justify-center text-[#4A5568] hover:text-[#16233D] hover:border-[#8A93A6] transition-all shadow-subtle"
+            className="w-10 h-10 rounded-xl bg-white border border-[#E4E2D8] flex items-center justify-center text-[#4A5568] hover:text-[#16233D] hover:border-[#2E7D8C]/50 transition-all shadow-subtle hover:shadow-card"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
@@ -100,9 +100,9 @@ export const Workspace: React.FC = () => {
 
           <div className="space-y-3">
             {/* Promoter */}
-            <div className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-between shadow-subtle">
+            <div className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-between shadow-subtle hover:shadow-card transition-all">
               <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-lg bg-white border border-[#E4E2D8] text-[#16233D] flex items-center justify-center font-mono font-bold text-xs shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#16233D] to-[#2E7D8C] text-white flex items-center justify-center font-mono font-bold text-xs shrink-0 shadow-card">
                   RK
                 </div>
                 <div>
@@ -117,9 +117,9 @@ export const Workspace: React.FC = () => {
             </div>
 
             {/* Merchant Banker */}
-            <div className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-between shadow-subtle">
+            <div className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-between shadow-subtle hover:shadow-card transition-all">
               <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-lg bg-white border border-[#E4E2D8] text-[#2E7D8C] flex items-center justify-center font-mono font-bold text-xs shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#2E7D8C] to-[#39A0B0] text-white flex items-center justify-center font-mono font-bold text-xs shrink-0 shadow-card">
                   VS
                 </div>
                 <div>
@@ -134,9 +134,9 @@ export const Workspace: React.FC = () => {
             </div>
 
             {/* Legal Counsel */}
-            <div className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-between shadow-subtle">
+            <div className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-between shadow-subtle hover:shadow-card transition-all">
               <div className="flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-lg bg-white border border-[#E4E2D8] text-[#39A0B0] flex items-center justify-center font-mono font-bold text-xs shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#39A0B0] to-[#2E7D8C] text-white flex items-center justify-center font-mono font-bold text-xs shrink-0 shadow-card">
                   AD
                 </div>
                 <div>
@@ -153,7 +153,9 @@ export const Workspace: React.FC = () => {
         </Card>
 
         {/* Right: Execute Sign-Off (1 col) */}
-        <Card className="flex flex-col justify-between">
+        <Card className="flex flex-col justify-between relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#2E7D8C] to-[#39A0B0]" />
+          
           <div>
             <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#2E7D8C] mb-3 pb-3 border-b border-[#E4E2D8] uppercase tracking-wider">
               <FileSignature className="w-4 h-4 text-[#2E7D8C]" strokeWidth={1.8} />
@@ -171,7 +173,7 @@ export const Workspace: React.FC = () => {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="e.g. Reviewed financial statements and Schedule VI disclosures. Approved for SEBI submission."
-                className="w-full h-24 p-3 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] text-[#16233D] placeholder-[#8A93A6] font-sans text-xs focus:outline-none focus:border-[#2E7D8C] focus:ring-1 focus:ring-[#2E7D8C]/20 resize-none transition-all"
+                className="w-full h-24 p-3 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] text-[#16233D] placeholder-[#8A93A6] font-sans text-xs focus:outline-none focus:border-[#2E7D8C] focus:ring-2 focus:ring-[#2E7D8C]/10 resize-none transition-all"
               />
             </div>
           </div>
@@ -180,7 +182,7 @@ export const Workspace: React.FC = () => {
             <button
               onClick={() => handleSignOff('approved')}
               disabled={signing}
-              className="w-full py-2.5 rounded-xl font-mono text-xs font-semibold uppercase tracking-wider bg-[#16233D] text-white hover:-translate-y-0.5 hover:shadow-subtle transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-3 rounded-xl font-mono text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-[#16233D] to-[#2E7D8C] text-white shadow-card transition-all flex items-center justify-center gap-2 disabled:opacity-50 btn-press hover:shadow-elevated"
             >
               <CheckCircle2 className="w-4 h-4" strokeWidth={2} />
               <span>Approve & Sign DRHP Filing</span>
@@ -188,7 +190,7 @@ export const Workspace: React.FC = () => {
             <button
               onClick={() => handleSignOff('rejected')}
               disabled={signing}
-              className="w-full py-2.5 rounded-xl font-mono text-xs font-semibold uppercase tracking-wider bg-[#FAFAF7] hover:bg-white border border-[#C9762E]/40 text-[#C9762E] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-3 rounded-xl font-mono text-xs font-semibold uppercase tracking-wider bg-[#FAFAF7] hover:bg-white border border-[#C9762E]/40 text-[#C9762E] transition-all flex items-center justify-center gap-2 disabled:opacity-50 btn-press hover:shadow-card"
             >
               <XCircle className="w-4 h-4" strokeWidth={2} />
               <span>Request Revisions / Reject</span>
@@ -213,14 +215,16 @@ export const Workspace: React.FC = () => {
         </div>
 
         {signoffs.length === 0 ? (
-          <div className="text-center py-12 text-[#8A93A6] font-mono text-xs">No digital sign-offs executed yet. Use the panel above to submit your approval.</div>
+          <div className="text-center py-16 text-[#8A93A6] font-mono text-xs">No digital sign-offs executed yet. Use the panel above to submit your approval.</div>
         ) : (
           <div className="space-y-3">
             {signoffs.map((s) => (
-              <div key={s.id} className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-subtle">
-                <div className="flex items-start gap-3.5 min-w-0">
-                  <div className={`w-10 h-10 rounded-lg bg-white border border-[#E4E2D8] flex items-center justify-center shrink-0 mt-0.5 ${
-                    s.status === 'approved' ? 'text-[#2E7D8C]' : 'text-[#C9762E]'
+              <div key={s.id} className="p-5 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-subtle hover:shadow-card transition-all">
+                <div className="flex items-start gap-4 min-w-0">
+                  <div className={`w-11 h-11 rounded-xl bg-gradient-to-br flex items-center justify-center shrink-0 mt-0.5 ${
+                    s.status === 'approved' 
+                      ? 'from-[#2E7D8C]/10 to-[#2E7D8C]/5 text-[#2E7D8C] border border-[#2E7D8C]/20' 
+                      : 'from-[#C9762E]/10 to-[#C9762E]/5 text-[#C9762E] border border-[#C9762E]/20'
                   }`}>
                     {s.status === 'approved' ? <CheckCircle2 className="w-5 h-5" strokeWidth={2} /> : <XCircle className="w-5 h-5" strokeWidth={2} />}
                   </div>
@@ -235,7 +239,7 @@ export const Workspace: React.FC = () => {
                       Role: {s.signer_role.replace('_', ' ')}
                     </div>
                     {s.comments && (
-                      <p className="font-sans text-xs text-[#4A5568] mt-2 bg-white p-3 rounded-lg border border-[#E4E2D8] max-w-2xl">
+                      <p className="font-sans text-xs text-[#4A5568] mt-2 bg-white p-3 rounded-xl border border-[#E4E2D8] max-w-2xl">
                         "{s.comments}"
                       </p>
                     )}

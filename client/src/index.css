@@ -3,54 +3,62 @@
 @tailwind utilities;
 
 :root {
-  --paper: #FAFAF7;
-  --paper-line: #E4E2D8;
-  --ink: #16233D;
-  --ink-soft: #4A5568;
-  --ink-faint: #8A93A6;
-  --trace: #2E7D8C;
-  --trace-bright: #39A0B0;
-  --trace-warm: #C9762E;
+  --paper: #F8F9F6;
+  --paper-line: #DCE0D6;
+  --ink: #0B1120;
+  --ink-soft: #25314C;
+  --ink-faint: #4B5A7A;
+  --trace: #086F83;
+  --trace-bright: #0B8CA5;
+  --trace-warm: #C2590E;
   --white: #FFFFFF;
   --radius: 10px;
   --display: 'Space Grotesk', -apple-system, system-ui, sans-serif;
   --body: 'Inter', -apple-system, system-ui, sans-serif;
   --mono: 'JetBrains Mono', monospace;
+  
+  /* Enhanced high-contrast gradients */
+  --gradient-primary: linear-gradient(135deg, #0B1120 0%, #086F83 100%);
+  --gradient-accent: linear-gradient(135deg, #086F83 0%, #0B8CA5 100%);
+  --gradient-warm: linear-gradient(135deg, #C2590E 0%, #D87B32 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,249,246,0.96) 100%);
 }
 
 @layer base {
   html, body, #root {
     background: 
-      radial-gradient(900px circle at 85% 5%, rgba(46, 125, 140, 0.075), transparent 100%),
-      radial-gradient(800px circle at 15% 90%, rgba(201, 118, 46, 0.045), transparent 100%),
+      radial-gradient(1200px circle at 85% 5%, rgba(8, 111, 131, 0.085), transparent 100%),
+      radial-gradient(1000px circle at 15% 90%, rgba(194, 89, 14, 0.055), transparent 100%),
       linear-gradient(var(--paper-line) 1px, transparent 1px) 0 0 / 40px 40px,
       linear-gradient(90deg, var(--paper-line) 1px, transparent 1px) 0 0 / 40px 40px,
       var(--paper);
     color: var(--ink);
     font-family: var(--body);
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 450;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
   }
 
   ::selection {
-    background: rgba(46, 125, 140, 0.15);
+    background: rgba(8, 111, 131, 0.22);
     color: var(--ink);
   }
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar { width: 7px; height: 7px; }
 ::-webkit-scrollbar-track { background: var(--paper); }
-::-webkit-scrollbar-thumb { background: var(--paper-line); border-radius: 999px; }
+::-webkit-scrollbar-thumb { background: #C4CAD6; border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--ink-faint); }
 
 /* Stagger entry animation */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -58,14 +66,28 @@
   }
 }
 
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(8, 111, 131, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(8, 111, 131, 0);
+  }
+}
+
 .stagger-fade-up {
   animation: fadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(var(--i, 0) * 55ms);
+  animation-delay: calc(var(--i, 0) * 50ms);
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
 }
 
 /* Tactile button press & inner sheen */
 .btn-press {
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-weight: 650 !important;
 }
 .btn-press:active {
   transform: scale(0.985) translateY(1px);
@@ -74,29 +96,35 @@
 /* Typography helpers */
 .font-heading {
   font-family: var(--display);
+  letter-spacing: -0.015em;
 }
 
-/* Multi-layered engineering shadows for rich depth */
+/* Multi-layered engineering shadows for ultra-clear depth & sharpness */
 .shadow-subtle {
-  box-shadow: 0 1px 2px 0 rgba(22, 35, 61, 0.025), 0 2px 4px -1px rgba(22, 35, 61, 0.035);
+  box-shadow: 0 1px 3px 0 rgba(11, 17, 32, 0.05), 0 3px 6px -1px rgba(11, 17, 32, 0.06);
 }
 .shadow-card {
-  box-shadow: 0 1px 3px 0 rgba(22, 35, 61, 0.035), 0 8px 20px -6px rgba(22, 35, 61, 0.065);
+  box-shadow: 0 2px 4px 0 rgba(11, 17, 32, 0.05), 0 10px 24px -6px rgba(11, 17, 32, 0.1);
 }
 .shadow-card-hover {
-  box-shadow: 0 4px 8px -1px rgba(22, 35, 61, 0.05), 0 18px 36px -8px rgba(22, 35, 61, 0.11);
+  box-shadow: 0 6px 12px -2px rgba(11, 17, 32, 0.08), 0 22px 44px -10px rgba(11, 17, 32, 0.16);
+}
+.shadow-elevated {
+  box-shadow: 0 10px 20px -4px rgba(11, 17, 32, 0.1), 0 28px 56px -14px rgba(11, 17, 32, 0.18);
 }
 
-/* Frosted glass utilities */
+/* Frosted glass utilities with higher contrast border */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-.glass-header {
-  background: rgba(250, 250, 247, 0.86);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--paper-line);
+}
+.glass-header {
+  background: rgba(248, 249, 246, 0.93);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--paper-line);
 }
 
 /* Interactive card hover elevate effect */
@@ -105,20 +133,49 @@
 }
 .card-interactive:hover {
   transform: translateY(-3px);
-  border-color: rgba(46, 125, 140, 0.45) !important;
-  box-shadow: 0 4px 8px -1px rgba(22, 35, 61, 0.05), 0 18px 36px -8px rgba(22, 35, 61, 0.11);
+  border-color: var(--trace) !important;
+  box-shadow: 0 6px 12px -2px rgba(11, 17, 32, 0.08), 0 22px 44px -10px rgba(11, 17, 32, 0.16);
 }
 
-/* Override utility backgrounds/borders to ensure pure Engineering Notebook consistency */
-.bg-surface {
-  background-color: var(--paper) !important;
+/* 1000% Legibility & Contrast Overrides for exact visibility across all legacy utility classes */
+@layer utilities {
+  .text-\[\#16233D\] { color: var(--ink) !important; }
+  .text-\[\#4A5568\] { color: var(--ink-soft) !important; font-weight: 500 !important; }
+  .text-\[\#8A93A6\] { color: var(--ink-faint) !important; font-weight: 600 !important; }
+  .text-\[\#2E7D8C\] { color: var(--trace) !important; font-weight: 700 !important; }
+  .text-\[\#39A0B0\] { color: var(--trace-bright) !important; font-weight: 700 !important; }
+  .text-\[\#C9762E\] { color: var(--trace-warm) !important; font-weight: 700 !important; }
+
+  .bg-\[\#FAFAF7\] { background-color: var(--paper) !important; }
+  .border-\[\#E4E2D8\] { border-color: var(--paper-line) !important; }
+  
+  /* Elevate micro text sizes so every label is 1000% readable and perfectly placed */
+  .text-\[10px\] {
+    font-size: 0.735rem !important;
+    line-height: 1.1rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+  }
+  .text-\[11px\] {
+    font-size: 0.785rem !important;
+    line-height: 1.2rem !important;
+    font-weight: 650 !important;
+  }
+  .text-xs {
+    font-size: 0.825rem !important;
+    line-height: 1.35rem !important;
+    font-weight: 500;
+  }
 }
-.bg-card {
-  background-color: var(--white) !important;
-}
-.bg-muted {
-  background-color: #F5F5F0 !important;
-}
-.border-border {
-  border-color: var(--paper-line) !important;
+
+/* Override general background classes */
+.bg-surface { background-color: var(--paper) !important; }
+.bg-card { background-color: var(--white) !important; }
+.border-border { border-color: var(--paper-line) !important; }
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-duration: 180ms;
 }

@@ -6,7 +6,8 @@ import {
   BookOpen, 
   ArrowLeft, 
   ArrowRight, 
-  Wand2
+  Wand2,
+  Sparkles
 } from 'lucide-react';
 import { apiService } from '../services/api';
 import { Project, DRHPSection } from '../types';
@@ -95,7 +96,7 @@ export const DeltaWizard: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="h-96 rounded-xl bg-white border border-[#E4E2D8] animate-pulse" />;
+  if (loading) return <div className="h-96 rounded-2xl bg-white border border-[#E4E2D8] animate-pulse" />;
   if (!project || !sections.length) return <div className="text-center py-20 text-[#8A93A6] font-mono text-xs">Section data not found.</div>;
 
   const curSec = sections[currentIdx];
@@ -107,7 +108,7 @@ export const DeltaWizard: React.FC = () => {
         <div className="flex items-center gap-3.5">
           <button
             onClick={() => navigate(`/project/${project.id}`)}
-            className="w-10 h-10 rounded-xl bg-white border border-[#E4E2D8] flex items-center justify-center text-[#4A5568] hover:text-[#16233D] hover:border-[#8A93A6] transition-all shadow-subtle"
+            className="w-10 h-10 rounded-xl bg-white border border-[#E4E2D8] flex items-center justify-center text-[#4A5568] hover:text-[#16233D] hover:border-[#2E7D8C]/50 transition-all shadow-subtle hover:shadow-card"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
@@ -123,12 +124,12 @@ export const DeltaWizard: React.FC = () => {
         {/* Action Buttons */}
         <div className="flex items-center gap-3">
           {saveMessage && (
-            <span className="font-mono text-xs font-semibold text-[#2E7D8C] animate-fade-in">{saveMessage}</span>
+            <span className="font-mono text-xs font-semibold text-[#2E7D8C] animate-scale-in">{saveMessage}</span>
           )}
           <button
             onClick={() => handleSave(false)}
             disabled={saving}
-            className="px-4 py-2.5 rounded-xl text-xs font-mono font-medium uppercase tracking-wider bg-white hover:border-[#8A93A6] border border-[#E4E2D8] text-[#16233D] transition-all flex items-center gap-2 shadow-subtle"
+            className="px-5 py-2.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider bg-white hover:border-[#2E7D8C]/50 border border-[#E4E2D8] text-[#16233D] transition-all flex items-center gap-2 shadow-subtle hover:shadow-card btn-press"
           >
             <Save className="w-3.5 h-3.5 text-[#39A0B0]" strokeWidth={2} />
             <span>Save Draft</span>
@@ -136,10 +137,10 @@ export const DeltaWizard: React.FC = () => {
           <button
             onClick={() => handleSave(true)}
             disabled={saving}
-            className={`px-5 py-2.5 rounded-xl text-xs font-mono font-medium uppercase tracking-wider transition-all flex items-center gap-2 ${
+            className={`px-6 py-2.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all flex items-center gap-2 btn-press ${
               curSec.is_completed
-                ? 'bg-[#FAFAF7] text-[#C9762E] border border-[#C9762E]/40 hover:bg-white'
-                : 'bg-[#16233D] text-white hover:-translate-y-0.5 hover:shadow-subtle'
+                ? 'bg-[#FAFAF7] text-[#C9762E] border border-[#C9762E]/40 hover:bg-white hover:shadow-card'
+                : 'bg-gradient-to-r from-[#16233D] to-[#2E7D8C] text-white hover:shadow-elevated'
             }`}
           >
             <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={2} />
@@ -163,15 +164,15 @@ export const DeltaWizard: React.FC = () => {
               onClick={() => handleSelectSection(idx)}
               className={`w-full text-left p-3 rounded-xl transition-all duration-200 flex items-center justify-between group ${
                 idx === currentIdx
-                  ? 'bg-[#FAFAF7] border border-[#E4E2D8] text-[#16233D] font-mono font-semibold shadow-subtle'
+                  ? 'bg-gradient-to-r from-[#2E7D8C]/5 to-transparent border border-[#2E7D8C]/20 text-[#16233D] font-mono font-semibold shadow-subtle'
                   : 'hover:bg-[#FAFAF7]/60 text-[#4A5568] hover:text-[#16233D]'
               }`}
             >
               <div className="flex items-center gap-2.5 min-w-0">
-                <span className={`w-6 h-6 rounded-md text-[10px] font-mono font-bold flex items-center justify-center shrink-0 border border-[#E4E2D8] ${
+                <span className={`w-7 h-7 rounded-lg text-[10px] font-mono font-bold flex items-center justify-center shrink-0 border transition-colors ${
                   s.is_completed 
-                    ? 'bg-[#FAFAF7] text-[#2E7D8C]' 
-                    : idx === currentIdx ? 'bg-[#16233D] text-white' : 'bg-white text-[#8A93A6]'
+                    ? 'bg-[#2E7D8C]/10 text-[#2E7D8C] border-[#2E7D8C]/30' 
+                    : idx === currentIdx ? 'bg-gradient-to-r from-[#16233D] to-[#2E7D8C] text-white border-transparent' : 'bg-white text-[#8A93A6] border-[#E4E2D8]'
                 }`}>
                   {s.section_order}
                 </span>
@@ -198,7 +199,7 @@ export const DeltaWizard: React.FC = () => {
 
             <button
               onClick={handleGenerateAIDraft}
-              className="px-3.5 py-1.5 rounded-lg bg-[#FAFAF7] border border-[#E4E2D8] text-[#2E7D8C] hover:border-[#2E7D8C] font-mono text-xs font-semibold transition-all flex items-center gap-1.5 shrink-0 shadow-subtle"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#2E7D8C]/10 to-[#39A0B0]/10 border border-[#2E7D8C]/30 text-[#2E7D8C] hover:border-[#2E7D8C] font-mono text-xs font-semibold transition-all flex items-center gap-1.5 shrink-0 shadow-subtle hover:shadow-card btn-press"
               title="Generate Schedule VI Boilerplate Draft"
             >
               <Wand2 className="w-3.5 h-3.5" strokeWidth={1.8} />
@@ -212,7 +213,7 @@ export const DeltaWizard: React.FC = () => {
               value={content}
               onChange={(e) => setContent(e.target.value)}
               placeholder={`Enter disclosure text for ${curSec.section_name} as mandated under SEBI ICDR Schedule VI...`}
-              className="w-full flex-1 min-h-[480px] p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] text-[#16233D] placeholder-[#8A93A6] font-sans text-sm leading-relaxed focus:outline-none focus:border-[#2E7D8C] focus:ring-1 focus:ring-[#2E7D8C]/20 resize-y transition-all"
+              className="w-full flex-1 min-h-[480px] p-5 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] text-[#16233D] placeholder-[#8A93A6] font-sans text-sm leading-relaxed focus:outline-none focus:border-[#2E7D8C] focus:ring-2 focus:ring-[#2E7D8C]/10 resize-y transition-all"
             />
           </div>
 
@@ -253,7 +254,7 @@ export const DeltaWizard: React.FC = () => {
             <p className="font-sans text-xs text-[#4A5568] leading-relaxed">
               {curSec.guidance_notes || 'No specific regulatory guidance notes available for this section.'}
             </p>
-            <div className="mt-4 pt-3 border-t border-[#E4E2D8] font-mono text-[11px] text-[#4A5568] space-y-1.5">
+            <div className="mt-4 pt-3 border-t border-[#E4E2D8] font-mono text-[11px] text-[#4A5568] space-y-2">
               <div className="flex justify-between">
                 <span>Mandatory Section:</span>
                 <span className="font-semibold text-[#16233D]">{curSec.is_mandatory ? 'Yes (Schedule VI)' : 'No'}</span>
@@ -266,7 +267,8 @@ export const DeltaWizard: React.FC = () => {
           </Card>
 
           <Card className="p-5">
-            <div className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#8A93A6] mb-3">
+            <div className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#8A93A6] mb-3 flex items-center gap-2">
+              <Sparkles className="w-3.5 h-3.5 text-[#C9762E]" strokeWidth={2} />
               ICDR Compliance Tips
             </div>
             <ul className="font-sans text-xs text-[#4A5568] space-y-2.5 list-disc pl-4 leading-normal">

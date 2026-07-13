@@ -44,7 +44,7 @@ export const AuditTrail: React.FC = () => {
     loadAuditData();
   }, [id]);
 
-  if (loading) return <div className="h-96 rounded-xl bg-white border border-[#E4E2D8] animate-pulse" />;
+  if (loading) return <div className="h-96 rounded-2xl bg-white border border-[#E4E2D8] animate-pulse" />;
   if (!project) return <div className="text-center py-20 text-[#8A93A6] font-mono text-xs">Project not found.</div>;
 
   return (
@@ -54,7 +54,7 @@ export const AuditTrail: React.FC = () => {
         <div className="flex items-center gap-3.5">
           <button
             onClick={() => navigate(`/project/${project.id}`)}
-            className="w-10 h-10 rounded-xl bg-white border border-[#E4E2D8] flex items-center justify-center text-[#4A5568] hover:text-[#16233D] hover:border-[#8A93A6] transition-all shadow-subtle"
+            className="w-10 h-10 rounded-xl bg-white border border-[#E4E2D8] flex items-center justify-center text-[#4A5568] hover:text-[#16233D] hover:border-[#2E7D8C]/50 transition-all shadow-subtle hover:shadow-card"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
@@ -69,7 +69,7 @@ export const AuditTrail: React.FC = () => {
 
         <button
           onClick={loadAuditData}
-          className="px-5 py-2.5 rounded-xl text-xs font-mono font-medium uppercase tracking-wider bg-[#16233D] hover:-translate-y-0.5 hover:shadow-subtle text-white transition-all flex items-center gap-2 shrink-0"
+          className="px-6 py-3 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider bg-gradient-to-r from-[#16233D] to-[#2E7D8C] hover:shadow-elevated text-white transition-all flex items-center gap-2 shrink-0 btn-press"
         >
           <RefreshCw className="w-4 h-4" strokeWidth={2} />
           <span>Verify Hash Chain</span>
@@ -77,24 +77,28 @@ export const AuditTrail: React.FC = () => {
       </div>
 
       {/* Hash Verification Status Banner */}
-      <Card className={`p-6 border ${verification?.valid ? 'border-[#2E7D8C]/50 bg-[#FAFAF7]' : 'border-[#C9762E]/50 bg-[#FAFAF7]'}`}>
+      <Card className={`p-6 border relative overflow-hidden ${verification?.valid ? 'border-[#2E7D8C]/30' : 'border-[#C9762E]/30'}`}>
+        <div className={`absolute top-0 left-0 w-full h-1 ${verification?.valid ? 'bg-gradient-to-r from-[#2E7D8C] to-[#39A0B0]' : 'bg-gradient-to-r from-[#C9762E] to-[#E8A857]'}`} />
+        
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <div className={`w-14 h-14 rounded-xl flex items-center justify-center shrink-0 border border-[#E4E2D8] bg-white ${
-              verification?.valid ? 'text-[#2E7D8C]' : 'text-[#C9762E]'
+          <div className="flex items-center gap-5">
+            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 border ${
+              verification?.valid 
+                ? 'bg-gradient-to-br from-[#2E7D8C]/10 to-[#2E7D8C]/5 border-[#2E7D8C]/20 text-[#2E7D8C]' 
+                : 'bg-gradient-to-br from-[#C9762E]/10 to-[#C9762E]/5 border-[#C9762E]/20 text-[#C9762E]'
             }`}>
-              {verification?.valid ? <ShieldCheck className="w-7 h-7" strokeWidth={1.8} /> : <AlertTriangle className="w-7 h-7" strokeWidth={1.8} />}
+              {verification?.valid ? <ShieldCheck className="w-8 h-8" strokeWidth={1.8} /> : <AlertTriangle className="w-8 h-8" strokeWidth={1.8} />}
             </div>
             <div>
               <div className="flex items-center gap-2.5">
-                <span className={`font-heading text-base font-bold tracking-tight ${verification?.valid ? 'text-[#2E7D8C]' : 'text-[#C9762E]'}`}>
+                <span className={`font-heading text-lg font-bold tracking-tight ${verification?.valid ? 'text-[#2E7D8C]' : 'text-[#C9762E]'}`}>
                   {verification?.valid ? 'CRYPTOGRAPHIC HASH CHAIN VERIFIED' : 'TAMPERING DETECTED / CHAIN BROKEN!'}
                 </span>
                 <Badge variant={verification?.valid ? 'pass' : 'fail'} className="text-[10px]">
                   SHA-256
                 </Badge>
               </div>
-              <p className="font-sans text-xs text-[#4A5568] mt-1 leading-relaxed">
+              <p className="font-sans text-sm text-[#4A5568] mt-1 leading-relaxed">
                 {verification?.valid 
                   ? `All ${verification.entries_checked} audit entries are cryptographically linked and immutable. Zero data tampering detected.`
                   : `Warning! ${verification?.breaks.length} chain break(s) found in the log history. Regulatory integrity compromised.`}
@@ -127,20 +131,20 @@ export const AuditTrail: React.FC = () => {
         {logs.length === 0 ? (
           <div className="text-center py-16 text-[#8A93A6] font-mono text-xs">No audit logs recorded for this filing yet.</div>
         ) : (
-          <div className="relative pl-6 border-l-2 border-[#E4E2D8] space-y-6 ml-3 my-4">
+          <div className="relative pl-8 border-l-2 border-[#E4E2D8] space-y-6 ml-3 my-4">
             {logs.map((log) => (
               <div key={log.id} className="relative group">
                 {/* Timeline dot */}
-                <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white border-2 border-[#2E7D8C] group-hover:scale-125 transition-transform" />
+                <div className="absolute -left-[35px] top-1.5 w-5 h-5 rounded-full bg-white border-2 border-[#2E7D8C] group-hover:scale-125 group-hover:bg-[#2E7D8C]/10 transition-all" />
 
-                <div className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] hover:border-[#8A93A6] transition-all space-y-2.5 shadow-subtle">
+                <div className="p-5 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] hover:border-[#2E7D8C]/30 transition-all space-y-3 shadow-subtle hover:shadow-card">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div className="flex items-center gap-2.5">
                       <span className="font-heading text-sm font-bold text-[#16233D] capitalize">
                         {log.action.replace(/_/g, ' ')}
                       </span>
                       {log.entity_type && (
-                        <span className="text-[10px] px-2 py-0.5 rounded bg-white border border-[#E4E2D8] text-[#4A5568] font-mono uppercase font-semibold">
+                        <span className="text-[10px] px-2 py-0.5 rounded-lg bg-white border border-[#E4E2D8] text-[#4A5568] font-mono uppercase font-semibold">
                           {log.entity_type}
                         </span>
                       )}
@@ -159,13 +163,13 @@ export const AuditTrail: React.FC = () => {
                   </div>
 
                   {log.details && Object.keys(log.details).length > 0 && (
-                    <div className="font-mono text-xs text-[#4A5568] bg-white p-3 rounded-lg border border-[#E4E2D8] overflow-x-auto">
+                    <div className="font-mono text-xs text-[#4A5568] bg-white p-3 rounded-xl border border-[#E4E2D8] overflow-x-auto">
                       {JSON.stringify(log.details, null, 2)}
                     </div>
                   )}
 
                   {/* Hash Footer */}
-                  <div className="pt-2.5 border-t border-[#E4E2D8] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono text-[#8A93A6]">
+                  <div className="pt-3 border-t border-[#E4E2D8] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono text-[#8A93A6]">
                     <div className="flex items-center gap-1.5 min-w-0">
                       <LinkIcon className="w-3.5 h-3.5 text-[#2E7D8C] shrink-0" strokeWidth={2} />
                       <span className="shrink-0">Hash:</span>

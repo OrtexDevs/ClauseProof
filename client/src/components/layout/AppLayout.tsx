@@ -11,7 +11,7 @@ interface AppLayoutProps {
 
 export const AppLayout: React.FC<AppLayoutProps> = ({ children, currentProject, currentUser }) => {
   return (
-    <div className="min-h-[100dvh] flex bg-[#FAFAF7] text-[#16233D] font-sans">
+    <div className="min-h-[100dvh] flex bg-transparent text-[#16233D] font-sans">
       <Sidebar currentProject={currentProject} currentUser={currentUser} />
       <div className="flex-1 ml-64 flex flex-col min-h-[100dvh]">
         <Navbar currentProject={currentProject} />

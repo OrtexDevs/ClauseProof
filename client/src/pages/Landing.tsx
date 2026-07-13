@@ -6,7 +6,7 @@ export const Landing: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-[100dvh] bg-[#FAFAF7] text-[#16233D] font-sans flex flex-col relative overflow-hidden">
+    <div className="min-h-[100dvh] bg-transparent text-[#16233D] font-sans flex flex-col relative overflow-hidden">
       {/* Nav */}
       <nav className="max-w-[1120px] mx-auto w-full px-6 lg:px-8 py-6 flex items-center justify-between relative z-10 border-b border-[#E4E2D8]/60">
         <div className="flex items-center gap-3">

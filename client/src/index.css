@@ -2,36 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --paper: #FAFAF7;
+  --paper-line: #E4E2D8;
+  --ink: #16233D;
+  --ink-soft: #4A5568;
+  --ink-faint: #8A93A6;
+  --trace: #2E7D8C;
+  --trace-bright: #39A0B0;
+  --trace-warm: #C9762E;
+  --white: #FFFFFF;
+  --radius: 10px;
+  --display: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+  --body: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
 @layer base {
   html, body, #root {
-    background-color: #FAFAF7;
-    color: #16233D;
-    font-family: 'Inter', -apple-system, system-ui, sans-serif;
-  }
-
-  /* Engineering Paper Drafting Grid Background */
-  body {
-    background-color: #FAFAF7;
-    background-image: 
-      linear-gradient(to right, #E4E2D8 1px, transparent 1px),
-      linear-gradient(to bottom, #E4E2D8 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-position: top left;
+    background: 
+      linear-gradient(var(--paper-line) 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(90deg, var(--paper-line) 1px, transparent 1px) 0 0 / 40px 40px,
+      var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
   }
 
   ::selection {
     background: rgba(46, 125, 140, 0.15);
-    color: #16233D;
+    color: var(--ink);
   }
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #FAFAF7; }
-::-webkit-scrollbar-thumb { background: #E4E2D8; border-radius: 999px; }
-::-webkit-scrollbar-thumb:hover { background: #8A93A6; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--paper-line); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-faint); }
 
 /* Stagger entry utility */
 .stagger-fade-up {
@@ -49,19 +60,19 @@
 
 /* Typography helpers */
 .font-heading {
-  font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+  font-family: var(--display);
 }
 
 /* Override utility backgrounds/borders to ensure pure Engineering Notebook consistency */
 .bg-surface {
-  background-color: #FAFAF7 !important;
+  background-color: var(--paper) !important;
 }
 .bg-card {
-  background-color: #FFFFFF !important;
+  background-color: var(--white) !important;
 }
 .bg-muted {
   background-color: #F5F5F0 !important;
 }
 .border-border {
-  border-color: #E4E2D8 !important;
+  border-color: var(--paper-line) !important;
 }

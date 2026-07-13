@@ -33,7 +33,7 @@ export const Auth: React.FC = () => {
   const inputCls = 'w-full px-4 py-2.5 rounded-xl bg-white border border-[#E4E2D8] text-sm text-[#16233D] placeholder-[#8A93A6] focus:outline-none focus:border-[#2E7D8C] focus:ring-1 focus:ring-[#2E7D8C]/20 transition-all font-sans';
 
   return (
-    <div className="min-h-[100dvh] bg-[#FAFAF7] text-[#16233D] font-sans flex items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-[100dvh] bg-transparent text-[#16233D] font-sans flex items-center justify-center p-6 relative overflow-hidden">
       <div className="w-full max-w-md animate-fade-up relative z-10">
         {/* Brand */}
         <div className="text-center mb-8">

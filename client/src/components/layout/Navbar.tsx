@@ -1,6 +1,4 @@
 import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
-import { Shield, Sparkles, Building2, Bell } from 'lucide-react';
 import { Project } from '../../types';
 import { Badge } from '../common/Badge';
 
@@ -9,58 +7,29 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ currentProject }) => {
-  const location = useLocation();
-
-  const getPageTitle = () => {
-    const path = location.pathname;
-    if (path === '/' || path === '/dashboard') return 'SME IPO Compliance Dashboard';
-    if (path === '/projects/new') return 'Initialize New IPO Filing';
-    if (path.includes('/editor')) return 'Delta Wizard — Schedule VI Editor';
-    if (path.includes('/compliance')) return 'SEBI ICDR Deterministic Rule Engine';
-    if (path.includes('/workspace')) return 'Multi-Party Workspace & Digital Sign-Offs';
-    if (path.includes('/audit')) return 'Cryptographic Hash-Chained Audit Trail';
-    if (path.includes('/project/')) return 'IPO Project Overview';
-    return 'ClauseProof RegTech';
-  };
-
   return (
-    <header className="h-16 backdrop-blur-md sticky top-0 z-40 px-8 flex items-center justify-between shadow-glass" style={{ backgroundColor: 'rgba(255,255,255,0.85)', borderBottom: '1px solid #D9CFC7' }}>
-      {/* Breadcrumb / Title */}
-      <div className="flex items-center gap-3">
-        <h1 className="text-base font-bold tracking-tight flex items-center gap-2" style={{ color: '#1c1917' }}>
-          {getPageTitle()}
-        </h1>
-        {currentProject && location.pathname !== '/dashboard' && (
-          <div className="hidden md:flex items-center gap-2 pl-3" style={{ borderLeft: '1px solid #D9CFC7' }}>
-            <Building2 className="w-4 h-4" style={{ color: '#b39d82' }} />
-            <span className="text-xs font-semibold" style={{ color: '#44403c' }}>{currentProject.company_name}</span>
-            <Badge variant={currentProject.status === 'approved' ? 'pass' : 'draft'} className="ml-1 text-[10px]">
-              {currentProject.status.toUpperCase()}
+    <header className="h-16 bg-[#FAFAF7]/90 backdrop-blur-md border-b border-[#E4E2D8] px-8 flex items-center justify-between sticky top-0 z-40">
+      <div className="flex items-center gap-4">
+        {currentProject ? (
+          <div className="flex items-center gap-3">
+            <span className="font-heading text-sm font-bold text-[#16233D] tracking-tight">{currentProject.name}</span>
+            <span className="text-xs text-[#8A93A6] font-mono uppercase tracking-wider">({currentProject.company_name})</span>
+            <Badge variant={currentProject.status === 'approved' ? 'pass' : currentProject.status === 'in_review' ? 'info' : 'draft'}>
+              {currentProject.status.replace('_', ' ')}
             </Badge>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[11px] font-semibold text-[#2E7D8C] tracking-widest uppercase">SME IPO Compliance Ledger</span>
           </div>
         )}
       </div>
 
-      {/* Right Actions */}
       <div className="flex items-center gap-4">
-        {/* TechSprint Badge */}
-        <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: '#EFE9E3', border: '1px solid #D9CFC7', color: '#8c7a65' }}>
-          <Shield className="w-3.5 h-3.5" style={{ color: '#b39d82' }} />
-          <span>SEBI TechSprint Problem Statement 4</span>
+        <div className="flex items-center gap-2 font-mono text-[11px] font-medium px-3 py-1.5 rounded-lg bg-white border border-[#E4E2D8] text-[#2E7D8C] shadow-subtle uppercase tracking-wider">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D8C] animate-pulse" />
+          <span>SEBI ICDR 2025 Rules: Active</span>
         </div>
-
-        {/* AI Grounded Indicator */}
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', color: '#059669' }}>
-          <Sparkles className="w-3.5 h-3.5 animate-pulse" style={{ color: '#10b981' }} />
-          <span>Grounded in ICDR 2025</span>
-        </div>
-
-        {/* Notifications */}
-        <button className="w-8 h-8 rounded-full flex items-center justify-center transition-colors relative" style={{ backgroundColor: '#EFE9E3', border: '1px solid #D9CFC7', color: '#78716c' }}>
-          <Bell className="w-4 h-4" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#C9B59C] animate-ping" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#C9B59C]" />
-        </button>
       </div>
     </header>
   );

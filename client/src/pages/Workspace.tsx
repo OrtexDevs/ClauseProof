@@ -3,12 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { 
   Users, 
   ShieldCheck, 
-  UserCheck, 
   ArrowLeft, 
   CheckCircle2, 
   XCircle, 
-  Clock, 
-  Plus, 
   FileSignature, 
   Building2,
   Lock
@@ -60,26 +57,26 @@ export const Workspace: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="h-96 rounded-3xl bg-[#EFE9E3] animate-pulse border border-[#D9CFC7]" />;
-  if (!project) return <div className="text-center py-20 text-[#78716c]">Project not found.</div>;
+  if (loading) return <div className="h-96 rounded-xl bg-white border border-[#E4E2D8] animate-pulse" />;
+  if (!project) return <div className="text-center py-20 text-[#8A93A6] font-mono text-xs">Project not found.</div>;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-[#16233D]">
       {/* Top Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#E4E2D8]">
+        <div className="flex items-center gap-3.5">
           <button
             onClick={() => navigate(`/project/${project.id}`)}
-            className="w-10 h-10 rounded-xl bg-card border border-[#D9CFC7] flex items-center justify-center text-[#78716c] hover:text-[#44403c] transition-all"
+            className="w-10 h-10 rounded-xl bg-white border border-[#E4E2D8] flex items-center justify-center text-[#4A5568] hover:text-[#16233D] hover:border-[#8A93A6] transition-all shadow-subtle"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
           </button>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-[#b39d82] uppercase tracking-wider">Multi-Party Collaboration</span>
-              <span className="text-xs text-[#a8a29e] font-mono">· Digital Sign-Offs</span>
+            <div className="flex items-center gap-2 font-mono text-xs">
+              <span className="font-bold text-[#2E7D8C] uppercase tracking-wider">Multi-Party Collaboration</span>
+              <span className="text-[#8A93A6]">· Digital Sign-Offs</span>
             </div>
-            <h1 className="text-2xl font-black text-[#1c1917] tracking-tight">IPO Workspace & Approvals</h1>
+            <h1 className="font-heading text-2xl font-bold tracking-tight text-[#16233D]">IPO Workspace & Approvals</h1>
           </div>
         </div>
       </div>
@@ -87,14 +84,14 @@ export const Workspace: React.FC = () => {
       {/* Role & Sign-Off Workflow Box */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Left: Active Team Members (2 cols) */}
-        <Card glass className="md:col-span-2 space-y-6">
-          <div className="flex items-center justify-between pb-4 border-b border-[#D9CFC7]">
+        <Card className="md:col-span-2 space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#E4E2D8]">
             <div>
-              <h3 className="text-lg font-bold text-[#1c1917] tracking-tight flex items-center gap-2">
-                <Users className="w-5 h-5 text-[#b39d82]" />
+              <h3 className="font-heading text-lg font-bold text-[#16233D] tracking-tight flex items-center gap-2">
+                <Users className="w-5 h-5 text-[#2E7D8C]" strokeWidth={1.8} />
                 <span>Multi-Party IPO Review Team</span>
               </h3>
-              <p className="text-xs text-[#78716c] mt-0.5">
+              <p className="font-sans text-xs text-[#4A5568] mt-0.5">
                 Role-based review hierarchy across Promoters, Merchant Bankers, and Legal Counsel
               </p>
             </div>
@@ -103,97 +100,97 @@ export const Workspace: React.FC = () => {
 
           <div className="space-y-3">
             {/* Promoter */}
-            <div className="p-4 rounded-2xl bg-[#EFE9E3] border border-[#D9CFC7] flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#EFE9E3] text-[#b39d82] flex items-center justify-center font-bold text-sm shrink-0">
+            <div className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-between shadow-subtle">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-lg bg-white border border-[#E4E2D8] text-[#16233D] flex items-center justify-center font-mono font-bold text-xs shrink-0">
                   RK
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-[#1c1917]">Rajesh Kumar</div>
-                  <div className="text-xs text-[#78716c] flex items-center gap-1.5 mt-0.5">
-                    <Building2 className="w-3.5 h-3.5 text-[#a8a29e]" />
+                  <div className="font-heading text-sm font-bold text-[#16233D]">Rajesh Kumar</div>
+                  <div className="font-sans text-xs text-[#4A5568] flex items-center gap-1.5 mt-0.5">
+                    <Building2 className="w-3.5 h-3.5 text-[#8A93A6]" />
                     <span>TechVista Solutions Pvt Ltd</span>
                   </div>
                 </div>
               </div>
-              <Badge variant="primary" className="uppercase text-[10px]">Promoter / Issuer</Badge>
+              <Badge variant="primary">Promoter / Issuer</Badge>
             </div>
 
             {/* Merchant Banker */}
-            <div className="p-4 rounded-2xl bg-[#EFE9E3] border border-[#D9CFC7] flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#EFE9E3] text-[#b39d82] flex items-center justify-center font-bold text-sm shrink-0">
+            <div className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-between shadow-subtle">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-lg bg-white border border-[#E4E2D8] text-[#2E7D8C] flex items-center justify-center font-mono font-bold text-xs shrink-0">
                   VS
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-[#1c1917]">Vikram Sharma (Lead Manager)</div>
-                  <div className="text-xs text-[#78716c] flex items-center gap-1.5 mt-0.5">
-                    <Building2 className="w-3.5 h-3.5 text-[#a8a29e]" />
+                  <div className="font-heading text-sm font-bold text-[#16233D]">Vikram Sharma (Lead Manager)</div>
+                  <div className="font-sans text-xs text-[#4A5568] flex items-center gap-1.5 mt-0.5">
+                    <Building2 className="w-3.5 h-3.5 text-[#8A93A6]" />
                     <span>Apex Capital Advisors Ltd</span>
                   </div>
                 </div>
               </div>
-              <Badge variant="info" className="uppercase text-[10px]">Merchant Banker</Badge>
+              <Badge variant="info">Merchant Banker</Badge>
             </div>
 
             {/* Legal Counsel */}
-            <div className="p-4 rounded-2xl bg-[#EFE9E3] border border-[#D9CFC7] flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#EFE9E3] text-[#b39d82] flex items-center justify-center font-bold text-sm shrink-0">
+            <div className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex items-center justify-between shadow-subtle">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-lg bg-white border border-[#E4E2D8] text-[#39A0B0] flex items-center justify-center font-mono font-bold text-xs shrink-0">
                   AD
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-[#1c1917]">Adv. Ananya Desai</div>
-                  <div className="text-xs text-[#78716c] flex items-center gap-1.5 mt-0.5">
-                    <Building2 className="w-3.5 h-3.5 text-[#a8a29e]" />
+                  <div className="font-heading text-sm font-bold text-[#16233D]">Adv. Ananya Desai</div>
+                  <div className="font-sans text-xs text-[#4A5568] flex items-center gap-1.5 mt-0.5">
+                    <Building2 className="w-3.5 h-3.5 text-[#8A93A6]" />
                     <span>LexCorp Advocates & Solicitors</span>
                   </div>
                 </div>
               </div>
-              <Badge variant="warning" className="uppercase text-[10px]">Legal Counsel</Badge>
+              <Badge variant="warning">Legal Counsel</Badge>
             </div>
           </div>
         </Card>
 
         {/* Right: Execute Sign-Off (1 col) */}
-        <Card glass className="flex flex-col justify-between border-[#D9CFC7] bg-gradient-to-b from-purple-950/20 to-transparent">
+        <Card className="flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 text-sm font-bold text-[#8c7a65] mb-3 pb-3 border-b border-[#D9CFC7]">
-              <FileSignature className="w-5 h-5 text-[#b39d82]" />
+            <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#2E7D8C] mb-3 pb-3 border-b border-[#E4E2D8] uppercase tracking-wider">
+              <FileSignature className="w-4 h-4 text-[#2E7D8C]" strokeWidth={1.8} />
               <span>Digital Sign-Off Stamping</span>
             </div>
-            <p className="text-xs text-[#44403c] leading-relaxed mb-4">
+            <p className="font-sans text-xs text-[#4A5568] leading-relaxed mb-4">
               Execute your formal approval for this DRHP filing. Your digital signature will be cryptographically hashed and recorded into the SHA-256 audit ledger.
             </p>
 
             <div className="mb-4">
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#78716c] mb-1.5">
+              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-[#8A93A6] mb-1.5">
                 Approval Comments / Notes
               </label>
               <textarea
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="e.g. Reviewed financial statements and Schedule VI disclosures. Approved for SEBI submission."
-                className="w-full h-24 p-3 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] text-xs focus:outline-none focus:border-[#C9B59C] resize-none"
+                className="w-full h-24 p-3 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] text-[#16233D] placeholder-[#8A93A6] font-sans text-xs focus:outline-none focus:border-[#2E7D8C] focus:ring-1 focus:ring-[#2E7D8C]/20 resize-none transition-all"
               />
             </div>
           </div>
 
-          <div className="space-y-2 pt-4 border-t border-[#D9CFC7]">
+          <div className="space-y-2.5 pt-4 border-t border-[#E4E2D8]">
             <button
               onClick={() => handleSignOff('approved')}
               disabled={signing}
-              className="w-full py-3 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-glow hover:shadow-glow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-2.5 rounded-xl font-mono text-xs font-semibold uppercase tracking-wider bg-[#16233D] text-white hover:-translate-y-0.5 hover:shadow-subtle transition-all flex items-center justify-center gap-2 disabled:opacity-50"
             >
-              <CheckCircle2 className="w-4 h-4" />
+              <CheckCircle2 className="w-4 h-4" strokeWidth={2} />
               <span>Approve & Sign DRHP Filing</span>
             </button>
             <button
               onClick={() => handleSignOff('rejected')}
               disabled={signing}
-              className="w-full py-2.5 rounded-xl text-xs font-bold bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/30 text-rose-300 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-2.5 rounded-xl font-mono text-xs font-semibold uppercase tracking-wider bg-[#FAFAF7] hover:bg-white border border-[#C9762E]/40 text-[#C9762E] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
             >
-              <XCircle className="w-4 h-4" />
+              <XCircle className="w-4 h-4" strokeWidth={2} />
               <span>Request Revisions / Reject</span>
             </button>
           </div>
@@ -201,56 +198,56 @@ export const Workspace: React.FC = () => {
       </div>
 
       {/* Sign-Off History Table */}
-      <Card glass>
-        <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#D9CFC7]">
+      <Card>
+        <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#E4E2D8]">
           <div>
-            <h3 className="text-lg font-bold text-[#1c1917] tracking-tight flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-emerald-400" />
+            <h3 className="font-heading text-lg font-bold text-[#16233D] tracking-tight flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-[#2E7D8C]" strokeWidth={1.8} />
               <span>Cryptographic Sign-Off History</span>
             </h3>
-            <p className="text-xs text-[#78716c] mt-0.5">
+            <p className="font-sans text-xs text-[#4A5568] mt-0.5">
               Immutable record of all stakeholder approvals stamped with SHA-256 signatures
             </p>
           </div>
-          <Badge variant="info" className="font-mono">{signoffs.length} Sign-Offs Recorded</Badge>
+          <Badge variant="info">{signoffs.length} Sign-Offs Recorded</Badge>
         </div>
 
         {signoffs.length === 0 ? (
-          <div className="text-center py-12 text-[#78716c]">No digital sign-offs executed yet. Use the panel above to submit your approval.</div>
+          <div className="text-center py-12 text-[#8A93A6] font-mono text-xs">No digital sign-offs executed yet. Use the panel above to submit your approval.</div>
         ) : (
           <div className="space-y-3">
             {signoffs.map((s) => (
-              <div key={s.id} className="p-4 rounded-2xl bg-[#EFE9E3] border border-[#D9CFC7] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="flex items-start gap-3.5">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5 ${
-                    s.status === 'approved' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'
+              <div key={s.id} className="p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-subtle">
+                <div className="flex items-start gap-3.5 min-w-0">
+                  <div className={`w-10 h-10 rounded-lg bg-white border border-[#E4E2D8] flex items-center justify-center shrink-0 mt-0.5 ${
+                    s.status === 'approved' ? 'text-[#2E7D8C]' : 'text-[#C9762E]'
                   }`}>
-                    {s.status === 'approved' ? <CheckCircle2 className="w-5 h-5" /> : <XCircle className="w-5 h-5" />}
+                    {s.status === 'approved' ? <CheckCircle2 className="w-5 h-5" strokeWidth={2} /> : <XCircle className="w-5 h-5" strokeWidth={2} />}
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-bold text-[#1c1917]">{s.signer_name || 'Rajesh Kumar'}</span>
-                      <Badge variant={s.status === 'approved' ? 'pass' : 'fail'} className="text-[10px] uppercase font-mono">
+                      <span className="font-heading text-sm font-bold text-[#16233D]">{s.signer_name || 'Rajesh Kumar'}</span>
+                      <Badge variant={s.status === 'approved' ? 'pass' : 'fail'}>
                         {s.status}
                       </Badge>
                     </div>
-                    <div className="text-xs text-[#78716c] capitalize mt-0.5 font-mono">
+                    <div className="font-mono text-xs text-[#8A93A6] capitalize mt-0.5">
                       Role: {s.signer_role.replace('_', ' ')}
                     </div>
                     {s.comments && (
-                      <p className="text-xs text-[#44403c] mt-2 bg-[#EFE9E3] p-2 rounded-lg border border-[#D9CFC7] max-w-2xl">
+                      <p className="font-sans text-xs text-[#4A5568] mt-2 bg-white p-3 rounded-lg border border-[#E4E2D8] max-w-2xl">
                         "{s.comments}"
                       </p>
                     )}
                   </div>
                 </div>
 
-                <div className="text-right shrink-0 text-xs font-mono text-[#a8a29e] border-t sm:border-t-0 pt-2 sm:pt-0 border-[#D9CFC7]">
-                  <div className="text-[#b39d82] font-bold flex items-center sm:justify-end gap-1">
-                    <Lock className="w-3 h-3" />
+                <div className="text-right shrink-0 font-mono text-xs text-[#8A93A6] border-t sm:border-t-0 pt-2 sm:pt-0 border-[#E4E2D8] space-y-1">
+                  <div className="text-[#2E7D8C] font-semibold flex items-center sm:justify-end gap-1">
+                    <Lock className="w-3 h-3" strokeWidth={2} />
                     <span>{s.digital_signature}</span>
                   </div>
-                  <div className="text-[#a8a29e] mt-0.5">
+                  <div className="text-[#8A93A6] text-[11px]">
                     {new Date(s.signed_at || s.created_at).toLocaleString()}
                   </div>
                 </div>

@@ -10,29 +10,22 @@ interface BadgeProps {
   icon?: React.ReactNode;
 }
 
-export const Badge: React.FC<BadgeProps> = ({ 
-  variant = 'draft', 
-  children, 
-  className,
-  icon 
-}) => {
-  const variantStyles: Record<BadgeVariant, string> = {
-    pass: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    fail: 'bg-rose-50 text-rose-700 border-rose-200',
-    warning: 'bg-amber-50 text-amber-700 border-amber-200',
-    info: 'bg-blue-50 text-blue-700 border-blue-200',
-    draft: 'bg-[#EFE9E3] text-[#78716c] border-[#D9CFC7]',
-    primary: 'bg-[#EFE9E3] text-[#8c7a65] border-[#C9B59C] shadow-sm',
-  };
-
-  return (
-    <span className={twMerge(
-      'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold border tracking-wide transition-all duration-200',
-      variantStyles[variant],
-      className
-    )}>
-      {icon && <span className="w-3 h-3 flex items-center justify-center">{icon}</span>}
-      {children}
-    </span>
-  );
+const styles: Record<BadgeVariant, string> = {
+  pass:    'bg-[#2E7D8C]/10 text-[#2E7D8C] border-[#2E7D8C]/30',
+  fail:    'bg-[#C9762E]/10 text-[#C9762E] border-[#C9762E]/30',
+  warning: 'bg-[#C9762E]/10 text-[#C9762E] border-[#C9762E]/30',
+  info:    'bg-[#39A0B0]/10 text-[#39A0B0] border-[#39A0B0]/30',
+  draft:   'bg-[#F5F5F0] text-[#4A5568] border-[#E4E2D8]',
+  primary: 'bg-[#16233D] text-white border-[#16233D]',
 };
+
+export const Badge: React.FC<BadgeProps> = ({ variant = 'draft', children, className, icon }) => (
+  <span className={twMerge(
+    'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md font-mono text-[11px] font-medium uppercase tracking-wider border',
+    styles[variant],
+    className
+  )}>
+    {icon && <span className="w-3 h-3 flex items-center justify-center shrink-0">{icon}</span>}
+    {children}
+  </span>
+);

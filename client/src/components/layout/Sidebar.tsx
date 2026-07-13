@@ -1,16 +1,8 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { 
-  LayoutDashboard, 
-  FolderPlus, 
-  FileText, 
-  ShieldCheck, 
-  History, 
-  Users, 
-  LogOut, 
-  Scale, 
-  Sparkles,
-  ChevronRight
+import {
+  LayoutDashboard, FolderPlus, FileText, ShieldCheck,
+  History, Users, LogOut, Scale, ChevronRight
 } from 'lucide-react';
 import { apiService } from '../../services/api';
 import { User, Project } from '../../types';
@@ -20,138 +12,125 @@ interface SidebarProps {
   currentUser: User | null;
 }
 
-const navLinkClass = (isActive: boolean) =>
-  `flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
-    isActive
-      ? 'bg-gradient-to-r from-[#C9B59C]/25 to-[#EFE9E3] text-[#6b5c4b] border-l-4 border-[#C9B59C] font-semibold shadow-sm'
-      : 'text-[#78716c] hover:text-[#44403c] hover:bg-[#EFE9E3]'
+const linkClass = (active: boolean) =>
+  `flex items-center justify-between px-3.5 py-2 rounded-xl text-xs transition-all duration-200 ${
+    active
+      ? 'bg-[#FAFAF7] text-[#16233D] font-mono font-semibold border border-[#E4E2D8] shadow-subtle'
+      : 'text-[#4A5568] hover:text-[#16233D] hover:bg-[#FAFAF7]/60 font-sans font-medium'
   }`;
 
 export const Sidebar: React.FC<SidebarProps> = ({ currentProject, currentUser }) => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    apiService.logout();
-    navigate('/');
-  };
-
   return (
-    <aside className="w-64 backdrop-blur-xl flex flex-col fixed inset-y-0 left-0 z-50 shadow-glass" style={{ backgroundColor: '#ffffff', borderRight: '1px solid #D9CFC7' }}>
-      {/* Brand Header */}
-      <div className="p-5 flex items-center gap-3" style={{ borderBottom: '1px solid #D9CFC7' }}>
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-glow" style={{ background: 'linear-gradient(135deg, #C9B59C, #a69279)' }}>
-          <Scale className="w-5 h-5" />
+    <aside className="w-64 bg-white border-r border-[#E4E2D8] flex flex-col fixed inset-y-0 left-0 z-50">
+      {/* Brand */}
+      <div className="p-5 border-b border-[#E4E2D8] flex items-center gap-3">
+        <div className="w-9 h-9 rounded-xl bg-[#16233D] flex items-center justify-center text-white font-bold shrink-0">
+          <Scale className="w-4 h-4" strokeWidth={2} />
         </div>
         <div>
-          <div className="font-extrabold text-base tracking-tight flex items-center gap-1.5" style={{ color: '#1c1917' }}>
-            ClauseProof <Sparkles className="w-3.5 h-3.5 animate-pulse" style={{ color: '#C9B59C' }} />
+          <div className="font-heading text-sm font-bold tracking-tight text-[#16233D] flex items-center gap-1.5">
+            ClauseProof <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D8C] animate-pulse" />
           </div>
-          <div className="text-[10px] uppercase tracking-widest font-bold" style={{ color: '#b39d82' }}>
-            RegTech OS v1.0
-          </div>
+          <div className="font-mono text-[10px] uppercase tracking-widest font-semibold text-[#2E7D8C]">RegTech OS</div>
         </div>
       </div>
 
-      {/* Navigation Links */}
-      <div className="flex-1 overflow-y-auto py-6 px-3 space-y-8">
-        {/* Main Section */}
+      {/* Nav */}
+      <div className="flex-1 overflow-y-auto py-6 px-3.5 space-y-7">
         <div>
-          <div className="text-[10px] uppercase tracking-wider font-bold px-3 mb-2" style={{ color: '#a8a29e' }}>
-            Platform
-          </div>
+          <div className="font-mono text-[10px] uppercase tracking-widest font-semibold text-[#8A93A6] px-3.5 mb-2.5">Platform</div>
           <nav className="space-y-1">
-            <NavLink to="/dashboard" className={({ isActive }) => navLinkClass(isActive)}>
-              <div className="flex items-center gap-3">
-                <LayoutDashboard className="w-4 h-4" style={{ color: '#b39d82' }} />
+            <NavLink to="/dashboard" className={({ isActive }) => linkClass(isActive)}>
+              <div className="flex items-center gap-2.5">
+                <LayoutDashboard className="w-4 h-4 text-[#2E7D8C]" strokeWidth={1.8} />
                 <span>Dashboard</span>
               </div>
             </NavLink>
-
-            <NavLink to="/projects/new" className={({ isActive }) => navLinkClass(isActive)}>
-              <div className="flex items-center gap-3">
-                <FolderPlus className="w-4 h-4" style={{ color: '#10b981' }} />
+            <NavLink to="/projects/new" className={({ isActive }) => linkClass(isActive)}>
+              <div className="flex items-center gap-2.5">
+                <FolderPlus className="w-4 h-4 text-[#39A0B0]" strokeWidth={1.8} />
                 <span>New IPO Filing</span>
               </div>
             </NavLink>
           </nav>
         </div>
 
-        {/* Current Project Workspace */}
         {currentProject && (
           <div>
-            <div className="text-[10px] uppercase tracking-wider font-bold px-3 mb-2 flex items-center justify-between" style={{ color: '#a8a29e' }}>
-              <span>Active Workspace</span>
-              <span className="text-xs font-mono" style={{ color: '#b39d82' }}>SEBI ICDR</span>
+            <div className="font-mono text-[10px] uppercase tracking-widest font-semibold text-[#8A93A6] px-3.5 mb-2.5 flex items-center justify-between">
+              <span>Workspace</span>
+              <span className="text-[#2E7D8C]">ICDR 2025</span>
             </div>
-            
-            <div className="px-3 py-2 mb-3 rounded-lg" style={{ backgroundColor: '#EFE9E3', border: '1px solid #D9CFC7' }}>
-              <div className="text-xs font-bold truncate" style={{ color: '#1c1917' }}>{currentProject.name}</div>
-              <div className="text-[11px] truncate mt-0.5" style={{ color: '#78716c' }}>{currentProject.company_name}</div>
+
+            <div className="px-3.5 py-2.5 mb-3 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8]">
+              <div className="font-heading text-xs font-bold text-[#16233D] truncate">{currentProject.name}</div>
+              <div className="font-mono text-[11px] text-[#4A5568] truncate mt-0.5">{currentProject.company_name}</div>
             </div>
 
             <nav className="space-y-1">
-              <NavLink to={`/project/${currentProject.id}`} className={({ isActive }) => navLinkClass(isActive)}>
-                <div className="flex items-center gap-3">
-                  <FileText className="w-4 h-4" style={{ color: '#3b82f6' }} />
+              <NavLink to={`/project/${currentProject.id}`} className={({ isActive }) => linkClass(isActive)}>
+                <div className="flex items-center gap-2.5">
+                  <FileText className="w-4 h-4 text-[#2E7D8C]" strokeWidth={1.8} />
                   <span>Overview</span>
                 </div>
-                <ChevronRight className="w-3.5 h-3.5" style={{ color: '#a8a29e' }} />
+                <ChevronRight className="w-3.5 h-3.5 text-[#8A93A6]" strokeWidth={1.8} />
               </NavLink>
 
-              <NavLink to={`/project/${currentProject.id}/editor`} className={({ isActive }) => navLinkClass(isActive)}>
-                <div className="flex items-center gap-3">
-                  <Sparkles className="w-4 h-4" style={{ color: '#C9B59C' }} />
+              <NavLink to={`/project/${currentProject.id}/editor`} className={({ isActive }) => linkClass(isActive)}>
+                <div className="flex items-center gap-2.5">
+                  <FileText className="w-4 h-4 text-[#39A0B0]" strokeWidth={1.8} />
                   <span>Delta Wizard</span>
                 </div>
-                <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold" style={{ backgroundColor: 'rgba(201,181,156,0.2)', color: '#b39d82' }}>AI</span>
+                <span className="font-mono text-[10px] px-2 py-0.5 rounded border border-[#E4E2D8] bg-white text-[#16233D] font-semibold">AI</span>
               </NavLink>
 
-              <NavLink to={`/project/${currentProject.id}/compliance`} className={({ isActive }) => navLinkClass(isActive)}>
-                <div className="flex items-center gap-3">
-                  <ShieldCheck className="w-4 h-4" style={{ color: '#10b981' }} />
+              <NavLink to={`/project/${currentProject.id}/compliance`} className={({ isActive }) => linkClass(isActive)}>
+                <div className="flex items-center gap-2.5">
+                  <ShieldCheck className="w-4 h-4 text-[#2E7D8C]" strokeWidth={1.8} />
                   <span>Rule Engine</span>
                 </div>
-                <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold" style={{ backgroundColor: 'rgba(16,185,129,0.1)', color: '#059669' }}>18 Rules</span>
+                <span className="font-mono text-[10px] px-2 py-0.5 rounded border border-[#E4E2D8] bg-white text-[#2E7D8C] font-semibold">18</span>
               </NavLink>
 
-              <NavLink to={`/project/${currentProject.id}/workspace`} className={({ isActive }) => navLinkClass(isActive)}>
-                <div className="flex items-center gap-3">
-                  <Users className="w-4 h-4" style={{ color: '#8b5cf6' }} />
+              <NavLink to={`/project/${currentProject.id}/workspace`} className={({ isActive }) => linkClass(isActive)}>
+                <div className="flex items-center gap-2.5">
+                  <Users className="w-4 h-4 text-[#C9762E]" strokeWidth={1.8} />
                   <span>Multi-Party Review</span>
                 </div>
               </NavLink>
 
-              <NavLink to={`/project/${currentProject.id}/audit`} className={({ isActive }) => navLinkClass(isActive)}>
-                <div className="flex items-center gap-3">
-                  <History className="w-4 h-4" style={{ color: '#06b6d4' }} />
+              <NavLink to={`/project/${currentProject.id}/audit`} className={({ isActive }) => linkClass(isActive)}>
+                <div className="flex items-center gap-2.5">
+                  <History className="w-4 h-4 text-[#39A0B0]" strokeWidth={1.8} />
                   <span>Audit Trail</span>
                 </div>
-                <span className="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold" style={{ backgroundColor: 'rgba(6,182,212,0.1)', color: '#0891b2' }}>SHA-256</span>
+                <span className="font-mono text-[10px] px-2 py-0.5 rounded border border-[#E4E2D8] bg-white text-[#4A5568] font-semibold">SHA</span>
               </NavLink>
             </nav>
           </div>
         )}
       </div>
 
-      {/* User Footer */}
-      <div className="p-4" style={{ borderTop: '1px solid #D9CFC7', backgroundColor: '#F9F8F6' }}>
+      {/* Footer */}
+      <div className="p-4 border-t border-[#E4E2D8] bg-[#FAFAF7]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs text-white shrink-0 shadow-sm" style={{ background: 'linear-gradient(135deg, #C9B59C, #a69279)' }}>
-              {currentUser?.name ? currentUser.name.charAt(0) : 'U'}
+            <div className="w-8 h-8 rounded-xl bg-[#16233D] flex items-center justify-center font-mono text-xs font-bold text-white shrink-0">
+              {currentUser?.name?.charAt(0) || 'U'}
             </div>
             <div className="min-w-0">
-              <div className="text-xs font-bold truncate" style={{ color: '#1c1917' }}>{currentUser?.name || 'Guest User'}</div>
-              <div className="text-[10px] truncate capitalize font-mono" style={{ color: '#78716c' }}>{currentUser?.role?.replace('_', ' ') || 'Promoter'}</div>
+              <div className="text-xs font-bold text-[#16233D] truncate">{currentUser?.name || 'Guest User'}</div>
+              <div className="text-[10px] text-[#4A5568] truncate capitalize font-mono">{currentUser?.role?.replace('_', ' ') || 'Promoter'}</div>
             </div>
           </div>
           <button
-            onClick={handleLogout}
-            className="p-2 rounded-lg transition-colors hover:bg-rose-50"
-            style={{ color: '#78716c' }}
+            onClick={() => { apiService.logout(); navigate('/'); }}
+            className="p-2 rounded-lg text-[#8A93A6] hover:text-[#C9762E] hover:bg-white border border-transparent hover:border-[#E4E2D8] transition-all"
             title="Sign Out"
           >
-            <LogOut className="w-4 h-4" />
+            <LogOut className="w-4 h-4" strokeWidth={1.8} />
           </button>
         </div>
       </div>

@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
 import { 
-  Sparkles, 
   Save, 
   CheckCircle2, 
   BookOpen, 
   ArrowLeft, 
   ArrowRight, 
-  Clock, 
-  Scale, 
-  AlertCircle,
-  Wand2,
-  FileText
+  Wand2
 } from 'lucide-react';
 import { apiService } from '../services/api';
 import { Project, DRHPSection } from '../types';
@@ -100,54 +95,54 @@ export const DeltaWizard: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="h-96 rounded-3xl bg-[#EFE9E3] animate-pulse border border-[#D9CFC7]" />;
-  if (!project || !sections.length) return <div className="text-center py-20 text-[#78716c]">Section data not found.</div>;
+  if (loading) return <div className="h-96 rounded-xl bg-white border border-[#E4E2D8] animate-pulse" />;
+  if (!project || !sections.length) return <div className="text-center py-20 text-[#8A93A6] font-mono text-xs">Section data not found.</div>;
 
   const curSec = sections[currentIdx];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-[#16233D]">
       {/* Top Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#D9CFC7]">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E4E2D8]">
+        <div className="flex items-center gap-3.5">
           <button
             onClick={() => navigate(`/project/${project.id}`)}
-            className="w-10 h-10 rounded-xl bg-card border border-[#D9CFC7] flex items-center justify-center text-[#78716c] hover:text-[#44403c] transition-all"
+            className="w-10 h-10 rounded-xl bg-white border border-[#E4E2D8] flex items-center justify-center text-[#4A5568] hover:text-[#16233D] hover:border-[#8A93A6] transition-all shadow-subtle"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
           </button>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-[#b39d82] uppercase tracking-wider">Delta Wizard</span>
-              <span className="text-xs text-[#a8a29e] font-mono">· Schedule VI Editor</span>
+            <div className="flex items-center gap-2 font-mono text-xs">
+              <span className="font-bold text-[#2E7D8C] uppercase tracking-wider">Delta Wizard</span>
+              <span className="text-[#8A93A6]">· Schedule VI Editor</span>
             </div>
-            <h1 className="text-xl font-black text-[#1c1917] tracking-tight">{project.name}</h1>
+            <h1 className="font-heading text-2xl font-bold text-[#16233D] tracking-tight">{project.name}</h1>
           </div>
         </div>
 
         {/* Action Buttons */}
         <div className="flex items-center gap-3">
           {saveMessage && (
-            <span className="text-xs font-semibold text-emerald-400 animate-fade-in">{saveMessage}</span>
+            <span className="font-mono text-xs font-semibold text-[#2E7D8C] animate-fade-in">{saveMessage}</span>
           )}
           <button
             onClick={() => handleSave(false)}
             disabled={saving}
-            className="px-4 py-2.5 rounded-xl text-sm font-bold bg-card hover:bg-card-hover border border-[#D9CFC7] text-[#1c1917] transition-all flex items-center gap-2"
+            className="px-4 py-2.5 rounded-xl text-xs font-mono font-medium uppercase tracking-wider bg-white hover:border-[#8A93A6] border border-[#E4E2D8] text-[#16233D] transition-all flex items-center gap-2 shadow-subtle"
           >
-            <Save className="w-4 h-4 text-[#b39d82]" />
+            <Save className="w-3.5 h-3.5 text-[#39A0B0]" strokeWidth={2} />
             <span>Save Draft</span>
           </button>
           <button
             onClick={() => handleSave(true)}
             disabled={saving}
-            className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${
+            className={`px-5 py-2.5 rounded-xl text-xs font-mono font-medium uppercase tracking-wider transition-all flex items-center gap-2 ${
               curSec.is_completed
-                ? 'bg-amber-500/20 text-[#b39d82] border border-amber-500/40 hover:bg-amber-500/30'
-                : 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-glow hover:shadow-glow-lg'
+                ? 'bg-[#FAFAF7] text-[#C9762E] border border-[#C9762E]/40 hover:bg-white'
+                : 'bg-[#16233D] text-white hover:-translate-y-0.5 hover:shadow-subtle'
             }`}
           >
-            <CheckCircle2 className="w-4 h-4" />
+            <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={2} />
             <span>{curSec.is_completed ? 'Mark Incomplete' : 'Mark Complete'}</span>
           </button>
         </div>
@@ -156,10 +151,10 @@ export const DeltaWizard: React.FC = () => {
       {/* Editor Workspace Split Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Section List Sidebar (3 cols) */}
-        <Card glass className="lg:col-span-3 p-3 max-h-[800px] overflow-y-auto space-y-1">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-[#78716c] px-3 py-2 border-b border-[#D9CFC7] mb-2 flex items-center justify-between">
+        <Card className="lg:col-span-3 p-3 max-h-[800px] overflow-y-auto space-y-1">
+          <div className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#8A93A6] px-3 py-2 border-b border-[#E4E2D8] mb-2 flex items-center justify-between">
             <span>Schedule VI Sections</span>
-            <span className="font-mono text-[#b39d82]">{sections.filter(s => s.is_completed).length}/{sections.length}</span>
+            <span className="font-mono text-[#2E7D8C]">{sections.filter(s => s.is_completed).length}/{sections.length}</span>
           </div>
 
           {sections.map((s, idx) => (
@@ -168,45 +163,45 @@ export const DeltaWizard: React.FC = () => {
               onClick={() => handleSelectSection(idx)}
               className={`w-full text-left p-3 rounded-xl transition-all duration-200 flex items-center justify-between group ${
                 idx === currentIdx
-                  ? 'bg-primary/20 border border-primary/40 text-[#1c1917] shadow-sm'
-                  : 'hover:bg-white/5 text-[#78716c] hover:text-[#44403c]'
+                  ? 'bg-[#FAFAF7] border border-[#E4E2D8] text-[#16233D] font-mono font-semibold shadow-subtle'
+                  : 'hover:bg-[#FAFAF7]/60 text-[#4A5568] hover:text-[#16233D]'
               }`}
             >
               <div className="flex items-center gap-2.5 min-w-0">
-                <span className={`w-6 h-6 rounded-lg text-[10px] font-bold flex items-center justify-center shrink-0 ${
+                <span className={`w-6 h-6 rounded-md text-[10px] font-mono font-bold flex items-center justify-center shrink-0 border border-[#E4E2D8] ${
                   s.is_completed 
-                    ? 'bg-emerald-500/20 text-emerald-400' 
-                    : idx === currentIdx ? 'bg-primary text-white' : 'bg-[#EFE9E3] text-[#a8a29e]'
+                    ? 'bg-[#FAFAF7] text-[#2E7D8C]' 
+                    : idx === currentIdx ? 'bg-[#16233D] text-white' : 'bg-white text-[#8A93A6]'
                 }`}>
                   {s.section_order}
                 </span>
-                <span className="text-xs font-semibold truncate">{s.section_name}</span>
+                <span className="font-sans text-xs font-semibold truncate">{s.section_name}</span>
               </div>
-              {s.is_completed && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 ml-1" />}
+              {s.is_completed && <CheckCircle2 className="w-3.5 h-3.5 text-[#2E7D8C] shrink-0 ml-1" strokeWidth={2} />}
             </button>
           ))}
         </Card>
 
         {/* Center Main Editor (6 cols) */}
-        <Card glass className="lg:col-span-6 p-6 flex flex-col min-h-[700px]">
+        <Card className="lg:col-span-6 p-6 flex flex-col min-h-[700px]">
           {/* Section Header */}
-          <div className="flex items-start justify-between gap-4 mb-4 pb-4 border-b border-[#D9CFC7]">
+          <div className="flex items-start justify-between gap-4 mb-4 pb-4 border-b border-[#E4E2D8]">
             <div>
               <div className="flex items-center gap-2">
                 <Badge variant={curSec.is_completed ? 'pass' : 'draft'} className="text-[10px] uppercase">
                   {curSec.is_completed ? 'Completed' : 'Drafting In Progress'}
                 </Badge>
-                <span className="text-xs text-[#a8a29e] font-mono">v{curSec.version} · {curSec.section_code}</span>
+                <span className="text-xs text-[#8A93A6] font-mono">v{curSec.version} · {curSec.section_code}</span>
               </div>
-              <h2 className="text-xl font-bold text-[#1c1917] mt-1.5">{curSec.section_name}</h2>
+              <h2 className="font-heading text-xl font-bold text-[#16233D] mt-1.5">{curSec.section_name}</h2>
             </div>
 
             <button
               onClick={handleGenerateAIDraft}
-              className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/20 to-purple-500/20 border border-amber-500/30 text-[#b39d82] hover:text-amber-200 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0"
+              className="px-3.5 py-1.5 rounded-lg bg-[#FAFAF7] border border-[#E4E2D8] text-[#2E7D8C] hover:border-[#2E7D8C] font-mono text-xs font-semibold transition-all flex items-center gap-1.5 shrink-0 shadow-subtle"
               title="Generate Schedule VI Boilerplate Draft"
             >
-              <Wand2 className="w-3.5 h-3.5" />
+              <Wand2 className="w-3.5 h-3.5" strokeWidth={1.8} />
               <span>AI Draft Template</span>
             </button>
           </div>
@@ -217,32 +212,32 @@ export const DeltaWizard: React.FC = () => {
               value={content}
               onChange={(e) => setContent(e.target.value)}
               placeholder={`Enter disclosure text for ${curSec.section_name} as mandated under SEBI ICDR Schedule VI...`}
-              className="w-full flex-1 min-h-[480px] p-4 rounded-xl bg-white border border-[#D9CFC7] text-[#1c1917] placeholder-[#a8a29e] font-sans text-sm leading-relaxed focus:outline-none focus:border-[#C9B59C] focus:ring-1 focus:ring-[#C9B59C] resize-y transition-all"
+              className="w-full flex-1 min-h-[480px] p-4 rounded-xl bg-[#FAFAF7] border border-[#E4E2D8] text-[#16233D] placeholder-[#8A93A6] font-sans text-sm leading-relaxed focus:outline-none focus:border-[#2E7D8C] focus:ring-1 focus:ring-[#2E7D8C]/20 resize-y transition-all"
             />
           </div>
 
           {/* Editor Footer / Character Stats */}
-          <div className="flex items-center justify-between mt-4 pt-3 border-t border-[#D9CFC7] text-xs text-[#a8a29e]">
+          <div className="flex items-center justify-between mt-4 pt-3 border-t border-[#E4E2D8] font-mono text-xs text-[#8A93A6]">
             <div>
-              Character count: <span className="font-mono text-[#44403c]">{content.length}</span> chars
+              Character count: <span className="text-[#16233D] font-bold">{content.length}</span> chars
               {content.length < 200 && !curSec.is_completed && (
-                <span className="text-amber-400 ml-2">⚠️ Needs adequate detail for ICDR validation</span>
+                <span className="text-[#C9762E] ml-2">⚠️ Needs adequate detail for ICDR validation</span>
               )}
             </div>
             <div className="flex items-center gap-4">
               <button
                 disabled={currentIdx === 0}
                 onClick={() => handleSelectSection(currentIdx - 1)}
-                className="hover:text-[#44403c] disabled:opacity-30 flex items-center gap-1"
+                className="hover:text-[#16233D] disabled:opacity-30 flex items-center gap-1 transition-colors"
               >
-                <ArrowLeft className="w-3.5 h-3.5" /> Prev Section
+                <ArrowLeft className="w-3.5 h-3.5" /> Prev
               </button>
               <button
                 disabled={currentIdx === sections.length - 1}
                 onClick={() => handleSelectSection(currentIdx + 1)}
-                className="hover:text-[#44403c] disabled:opacity-30 flex items-center gap-1"
+                className="hover:text-[#16233D] disabled:opacity-30 flex items-center gap-1 transition-colors"
               >
-                Next Section <ArrowRight className="w-3.5 h-3.5" />
+                Next <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -250,34 +245,34 @@ export const DeltaWizard: React.FC = () => {
 
         {/* Right SEBI Guidance Panel (3 cols) */}
         <div className="lg:col-span-3 space-y-4">
-          <Card glass className="p-5 border-[#D9CFC7] bg-gradient-to-b from-indigo-950/20 to-transparent">
-            <div className="flex items-center gap-2 text-sm font-bold text-[#8c7a65] mb-3 pb-2 border-b border-[#D9CFC7]">
-              <BookOpen className="w-4 h-4 text-[#b39d82]" />
+          <Card className="p-5">
+            <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#2E7D8C] mb-3 pb-2 border-b border-[#E4E2D8] uppercase tracking-wider">
+              <BookOpen className="w-4 h-4 text-[#2E7D8C]" strokeWidth={1.8} />
               <span>SEBI Schedule VI Guidance</span>
             </div>
-            <p className="text-xs text-[#44403c] leading-relaxed">
+            <p className="font-sans text-xs text-[#4A5568] leading-relaxed">
               {curSec.guidance_notes || 'No specific regulatory guidance notes available for this section.'}
             </p>
-            <div className="mt-4 pt-3 border-t border-[#D9CFC7] text-[11px] text-[#78716c] space-y-1">
+            <div className="mt-4 pt-3 border-t border-[#E4E2D8] font-mono text-[11px] text-[#4A5568] space-y-1.5">
               <div className="flex justify-between">
                 <span>Mandatory Section:</span>
-                <span className="font-semibold text-[#1c1917]">{curSec.is_mandatory ? 'Yes (Schedule VI)' : 'No'}</span>
+                <span className="font-semibold text-[#16233D]">{curSec.is_mandatory ? 'Yes (Schedule VI)' : 'No'}</span>
               </div>
               <div className="flex justify-between">
                 <span>Audit Trail Status:</span>
-                <span className="font-semibold text-emerald-400">SHA-256 Chained</span>
+                <span className="font-semibold text-[#2E7D8C]">SHA-256 Chained</span>
               </div>
             </div>
           </Card>
 
-          <Card glass className="p-5">
-            <div className="text-xs font-bold uppercase tracking-wider text-[#78716c] mb-3">
+          <Card className="p-5">
+            <div className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#8A93A6] mb-3">
               ICDR Compliance Tips
             </div>
-            <ul className="text-xs text-[#78716c] space-y-2.5 list-disc pl-4 leading-normal">
+            <ul className="font-sans text-xs text-[#4A5568] space-y-2.5 list-disc pl-4 leading-normal">
               <li>Ensure all figures match the restated audited financial statements exactly.</li>
-              <li>Under <strong className="text-[#1c1917]">Objects of the Issue</strong>, verify GCP does not exceed 15% of fresh issue.</li>
-              <li>Under <strong className="text-[#1c1917]">Risk Factors</strong>, quantify risks wherever numerical data is available per SEBI mandate.</li>
+              <li>Under <strong className="text-[#16233D]">Objects of the Issue</strong>, verify GCP does not exceed 15% of fresh issue.</li>
+              <li>Under <strong className="text-[#16233D]">Risk Factors</strong>, quantify risks wherever numerical data is available per SEBI mandate.</li>
               <li>Any promoter loans cannot be repaid from fresh IPO proceeds.</li>
             </ul>
           </Card>

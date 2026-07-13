@@ -11,11 +11,11 @@ interface AppLayoutProps {
 
 export const AppLayout: React.FC<AppLayoutProps> = ({ children, currentProject, currentUser }) => {
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#F9F8F6' }}>
+    <div className="min-h-[100dvh] flex bg-[#FAFAF7] text-[#16233D] font-sans">
       <Sidebar currentProject={currentProject} currentUser={currentUser} />
-      <div className="flex-1 ml-64 flex flex-col min-h-screen" style={{ backgroundColor: '#F9F8F6' }}>
+      <div className="flex-1 ml-64 flex flex-col min-h-[100dvh]">
         <Navbar currentProject={currentProject} />
-        <main className="flex-1 p-8 max-w-7xl w-full mx-auto animate-fade-in" style={{ backgroundColor: '#F9F8F6' }}>
+        <main className="flex-1 p-8 lg:p-12 max-w-[1120px] w-full mx-auto animate-fade-in">
           {children}
         </main>
       </div>

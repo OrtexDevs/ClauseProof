@@ -4,61 +4,73 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: '#F9F8F6', // Warm Alabaster Cream (#F9F8F6)!
+        // Engineering Notebook / Technical SaaS Design Tokens
+        surface: '#FAFAF7',
+        background: '#FAFAF7',
+        grid: '#E4E2D8',
         card: {
-          DEFAULT: '#ffffff',  // Crisp white cards on warm cream background!
-          hover: '#EFE9E3',    // Soft Stone / Linen hover (#EFE9E3)!
-          elevated: '#ffffff',
-          stone: '#EFE9E3',
+          DEFAULT: '#FFFFFF',
+          hover: '#FAFAF7',
         },
+        muted: '#F5F5F0',
+        border: '#E4E2D8',
+        
+        brand: {
+          DEFAULT: '#2E7D8C', // Primary Accent
+          secondary: '#39A0B0', // Secondary Accent
+          warm: '#C9762E', // Warm Accent
+        },
+        accent: {
+          DEFAULT: '#2E7D8C',
+          secondary: '#39A0B0',
+          warm: '#C9762E',
+        },
+        'text-primary': '#16233D',
+        'text-secondary': '#4A5568',
+        'text-muted': '#8A93A6',
+        
+        success: '#2E7D8C',
+        danger: '#C9762E',
+        warning: '#C9762E',
+        info: '#39A0B0',
+        
         primary: {
-          DEFAULT: '#C9B59C',  // Warm Champagne Gold accent (#C9B59C)!
-          light: '#d6c6b0',    // Lighter champagne
-          dark: '#b39d82',     // Richer bronze
-          glow: 'rgba(201, 181, 156, 0.35)',
+          DEFAULT: '#2E7D8C',
+          secondary: '#39A0B0',
+          warm: '#C9762E',
         },
-        success: {
-          DEFAULT: '#10b981',
-          bg: 'rgba(16, 185, 129, 0.12)',
-        },
-        warning: {
-          DEFAULT: '#f59e0b',
-          bg: 'rgba(245, 158, 11, 0.12)',
-        },
-        danger: {
-          DEFAULT: '#ef4444',
-          bg: 'rgba(239, 68, 68, 0.12)',
-        },
-        info: {
-          DEFAULT: '#3b82f6',
-          bg: 'rgba(59, 130, 246, 0.12)',
-        },
-        border: '#D9CFC7',     // Refined Taupe / Stone border (#D9CFC7)!
       },
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'system-ui', 'sans-serif'],
+        heading: ['Space Grotesk', '-apple-system', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       boxShadow: {
-        'glow': '0 0 25px rgba(201, 181, 156, 0.25)',
-        'glow-lg': '0 0 50px rgba(201, 181, 156, 0.35)',
-        'glass': '0 10px 30px -5px rgba(28, 25, 23, 0.08), 0 4px 6px -2px rgba(28, 25, 23, 0.04)',
+        'subtle': '0 1px 0 rgba(22,35,61,0.03)',
+        'elevation-1': '0 1px 3px rgba(22,35,61,0.05), 0 1px 2px rgba(22,35,61,0.03)',
+        'elevation-2': '0 4px 12px rgba(22,35,61,0.06), 0 1px 2px rgba(22,35,61,0.04)',
+        'elevation-3': '0 12px 28px rgba(22,35,61,0.08), 0 2px 4px rgba(22,35,61,0.04)',
       },
-      backdropBlur: {
-        'xs': '2px',
+      borderRadius: {
+        'xl': '0.75rem',  // 12px
+        '2xl': '0.875rem', // 14px
+        '3xl': '1rem',     // 16px
       },
       animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
+        'fade-in': 'fadeIn 0.25s ease-out',
+        'fade-up': 'fadeUp 0.35s ease-out both',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+        fadeIn: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        fadeUp: {
+          from: { opacity: '0', transform: 'translateY(6px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },

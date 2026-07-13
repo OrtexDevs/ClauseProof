@@ -5,7 +5,7 @@
  */
 import axios, { AxiosInstance } from 'axios';
 import { 
-  User, Project, DRHPSection, ComplianceReport, 
+  User, Project, DRHPSection, ComplianceReport, ComplianceResult,
   AuditLog, AuditVerification, SignOff, TeamMember, RegulatoryRule 
 } from '../types';
 

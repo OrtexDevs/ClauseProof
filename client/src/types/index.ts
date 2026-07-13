@@ -6,7 +6,7 @@
 export type UserRole = 'promoter' | 'merchant_banker' | 'legal_counsel' | 'compliance_officer' | 'admin';
 
 export interface User {
-  id: str;
+  id: string;
   email: string;
   name: string;
   role: UserRole;

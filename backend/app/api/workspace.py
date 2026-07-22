@@ -23,6 +23,10 @@ def add_team_member(
     db: Session = Depends(get_sync_db),
     current_user: User = Depends(get_current_user),
 ):
+    project = db.query(Project).filter(Project.id == project_id).first()
+    if not project:
+        raise HTTPException(status_code=404, detail="Project not found")
+    
     existing = db.query(ProjectTeam).filter(
         ProjectTeam.project_id == project_id,
         ProjectTeam.user_id == member.user_id,

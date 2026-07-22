@@ -233,6 +233,20 @@ export const NewProject: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-5">
             <div>
               <label className="block font-mono text-[11px] font-semibold uppercase tracking-wider text-[#4A5568] mb-1.5">
+                Face Value (₹)
+              </label>
+              <input
+                type="number"
+                value={faceValue}
+                onChange={(e) => setFaceValue(Number(e.target.value))}
+                className={inputCls + " font-mono"}
+                min="1"
+                step="1"
+              />
+            </div>
+
+            <div>
+              <label className="block font-mono text-[11px] font-semibold uppercase tracking-wider text-[#4A5568] mb-1.5">
                 Total Issue Size (₹ Crores)
               </label>
               <input

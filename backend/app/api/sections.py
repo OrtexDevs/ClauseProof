@@ -29,13 +29,25 @@ def generate_draft(
         project_data = {
             "name": project.name,
             "industry": project.industry,
+            "company_name": project.company_name,
+            "cin": project.cin,
+            "registered_office": project.registered_office,
             "issue_size_cr": project.issue_size_cr,
             "pre_issue_shares": project.pre_issue_shares,
             "fresh_issue_shares": project.fresh_issue_shares,
             "ofs_shares": project.ofs_shares,
             "price_band_high": project.price_band_high,
             "face_value": project.face_value,
-            "financials": project.financials or {}
+            "financials": {
+                "rev_fy1": project.revenue_fy1,
+                "rev_fy2": project.revenue_fy2,
+                "rev_fy3": project.revenue_fy3,
+                "ebitda_fy1": project.ebitda_fy1,
+                "ebitda_fy2": project.ebitda_fy2,
+                "ebitda_fy3": project.ebitda_fy3,
+                "pat_fy3": project.pat_fy3,
+                "net_worth": project.net_worth,
+            }
         }
     return generate_section_draft(section_code, project_data)
 

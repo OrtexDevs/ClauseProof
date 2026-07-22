@@ -167,6 +167,37 @@ export const apiService = {
     }
   },
 
+  async register(email: string, password: string, name: string, role: string, organization?: string): Promise<{ user: User; token: string }> {
+    try {
+      const res = await apiClient.post('/auth/register', { email, password, name, role, organization });
+      localStorage.setItem(LOCAL_STORAGE_KEYS.TOKEN, res.data.access_token);
+      localStorage.setItem(LOCAL_STORAGE_KEYS.CURRENT_USER, JSON.stringify(res.data.user));
+      return { user: res.data.user, token: res.data.access_token };
+    } catch {
+      // Local fallback: create user in localStorage
+      const users: User[] = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.USERS) || '[]');
+      const existing = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+      if (existing) {
+        throw new Error('Email already registered');
+      }
+      const newUser: User = {
+        id: 'user-' + Math.random().toString(36).substring(2, 9),
+        email,
+        name,
+        role: role as any,
+        organization,
+        is_active: true,
+      };
+      users.push(newUser);
+      localStorage.setItem(LOCAL_STORAGE_KEYS.USERS, JSON.stringify(users));
+      const token = 'mock-jwt-token-' + Date.now();
+      localStorage.setItem(LOCAL_STORAGE_KEYS.TOKEN, token);
+      localStorage.setItem(LOCAL_STORAGE_KEYS.CURRENT_USER, JSON.stringify(newUser));
+      await logLocalAudit('user_registered', 'user', newUser.id, { email, role });
+      return { user: newUser, token };
+    }
+  },
+
   getCurrentUser(): User | null {
     const userStr = localStorage.getItem(LOCAL_STORAGE_KEYS.CURRENT_USER);
     return userStr ? JSON.parse(userStr) : null;

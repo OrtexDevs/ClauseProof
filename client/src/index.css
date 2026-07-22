@@ -173,8 +173,8 @@
 .bg-card { background-color: var(--white) !important; }
 .border-border { border-color: var(--paper-line) !important; }
 
-/* Smooth transitions */
-* {
+/* Targeted transitions for interactive elements only */
+a, button, input, select, textarea, [role="button"] {
   transition-property: background-color, border-color, color, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   transition-duration: 180ms;

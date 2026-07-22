@@ -23,7 +23,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentProject, currentUser })
   const navigate = useNavigate();
 
   return (
-    <aside className="w-64 bg-white/98 backdrop-blur-md border-r border-[#DCE0D6] flex flex-col fixed inset-y-0 left-0 z-50 shadow-[1px_0_8px_rgba(11,17,32,0.03)]">
+    <aside className="w-64 bg-white backdrop-blur-md border-r border-[#DCE0D6] flex flex-col fixed inset-y-0 left-0 z-50 shadow-[1px_0_8px_rgba(11,17,32,0.03)]">
       {/* Brand */}
       <div className="p-5 border-b border-[#DCE0D6] flex items-center gap-3 bg-[#EEF0EB]/50">
         <div className="w-9 h-9 rounded-xl bg-[#0B1120] flex items-center justify-center text-white font-bold shrink-0 shadow-subtle">

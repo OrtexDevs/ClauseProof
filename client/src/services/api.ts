@@ -434,7 +434,7 @@ export const apiService = {
         rule_text: 'DRHP must contain all mandatory sections per Schedule VI, Part A',
         category: 'disclosure',
         severity: 'mandatory',
-        status: missingCodes.length === 0 ? 'pass' : missingCodes.length <= 5 ? 'warning' : 'fail',
+        status: missingCodes.length === 0 ? 'pass' : 'fail',
         message: missingCodes.length === 0 ? 'All 18 Schedule VI sections completed' : `${missingCodes.length} mandatory sections pending completion`,
       });
 

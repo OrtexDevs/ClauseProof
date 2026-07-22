@@ -22,7 +22,11 @@ export const Auth: React.FC = () => {
     setError('');
     setLoading(true);
     try {
-      await apiService.login(email, password);
+      if (mode === 'register') {
+        await apiService.register(email, password, name, role, organization);
+      } else {
+        await apiService.login(email, password);
+      }
       navigate('/dashboard');
     } catch (err: any) {
       setError(err.message || 'Authentication failed.');

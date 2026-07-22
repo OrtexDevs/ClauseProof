@@ -470,7 +470,7 @@ export const apiService = {
       const minAppValue = lotSize * priceHigh;
       results.push({
         rule_code: 'ICDR_SME_001',
-        rule_text: 'Minimum application size for SME IPO must be at least ₹2,000,00',
+        rule_text: 'Minimum application size for SME IPO must be at least ₹2,00,000',
         category: 'structural',
         severity: 'mandatory',
         status: minAppValue >= 200000 ? 'pass' : 'fail',

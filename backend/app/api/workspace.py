@@ -72,6 +72,10 @@ def create_signoff(
     db: Session = Depends(get_sync_db),
     current_user: User = Depends(get_current_user),
 ):
+    project = db.query(Project).filter(Project.id == project_id).first()
+    if not project:
+        raise HTTPException(status_code=404, detail="Project not found")
+    
     signoff = SignOff(
         project_id=project_id, section_id=signoff_data.section_id,
         signer_id=current_user.id, signer_role=current_user.role,

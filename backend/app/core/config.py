@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     API_PREFIX: str = "/api/v1"
     
     # Database
-    DATABASE_URL: str = "sqlite+aiosqlite:///./clauseproof.db"
+    DATABASE_URL: str = "sqlite:///./clauseproof.db"
     DATABASE_SYNC_URL: str = "sqlite:///./clauseproof.db"
     
     # JWT Auth

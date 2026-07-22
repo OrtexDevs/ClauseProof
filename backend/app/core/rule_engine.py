@@ -63,30 +63,25 @@ class RuleEngine:
         
         for rule in rules:
             result = self._execute_rule(rule, project)
+            
+            # Count by status
+            status = result["status"]
+            if status == "pass":
+                results["passed"] += 1
+            elif status == "fail":
+                results["failed"] += 1
+            elif status == "warning":
+                results["warnings"] += 1
+            elif status == "skipped":
+                results["skipped"] += 1
             results["total"] += 1
-            results[f"{result['status']}ed" if result['status'] != 'warning' else 'warnings'] += 1
-            
-            # Handle 'pass' -> 'passed' and 'fail' -> 'failed'
-            status_key = result['status']
-            if status_key == 'pass':
-                results['passed'] += 1
-                results['total'] -= 1  # Undo double count
-            elif status_key == 'fail':
-                results['failed'] += 1
-                results['total'] -= 1
-            elif status_key == 'warning':
-                results['total'] -= 1
-            elif status_key == 'skipped':
-                results['total'] -= 1
-            
-            results['total'] += 1
             
             # Store result in DB
             compliance_result = ComplianceResult(
                 project_id=project_id,
                 section_id=result.get("section_id"),
                 rule_id=rule.id,
-                status=result["status"],
+                status=status,
                 message=result["message"],
                 evidence=result.get("evidence"),
             )
@@ -107,7 +102,7 @@ class RuleEngine:
         
         self.db.commit()
         
-        # Recalculate summary
+        # Build final summary from details
         results["passed"] = sum(1 for d in results["details"] if d["status"] == "pass")
         results["failed"] = sum(1 for d in results["details"] if d["status"] == "fail")
         results["warnings"] = sum(1 for d in results["details"] if d["status"] == "warning")

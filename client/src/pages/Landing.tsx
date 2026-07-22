@@ -8,7 +8,7 @@ export const Landing: React.FC = () => {
   return (
     <div className="min-h-[100dvh] bg-transparent text-[#0B1120] font-sans flex flex-col relative overflow-hidden">
       {/* Nav */}
-      <nav className="max-w-[1140px] mx-auto w-full px-6 lg:px-8 py-6 flex items-center justify-between relative z-10 border-b border-[#DCE0D6] glass-header">
+      <nav className="w-full px-6 lg:px-10 py-6 flex items-center justify-between relative z-10 border-b border-[#DCE0D6] glass-header">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-[#0B1120] flex items-center justify-center text-white font-bold shadow-card shrink-0">
             <Scale className="w-4 h-4" strokeWidth={2.2} />
@@ -38,7 +38,7 @@ export const Landing: React.FC = () => {
       </nav>
 
       {/* Hero */}
-      <main className="flex-1 max-w-[1140px] mx-auto w-full px-6 lg:px-8 py-16 lg:py-24 relative z-10">
+      <main className="flex-1 w-full px-6 lg:px-10 py-16 lg:py-24 relative z-10 max-w-[1440px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-7 stagger-fade-up" style={{ '--i': 1 } as React.CSSProperties}>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-white border border-[#DCE0D6] font-mono text-xs uppercase tracking-widest text-[#086F83] font-extrabold mb-6 shadow-subtle">
@@ -173,11 +173,13 @@ export const Landing: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="max-w-[1140px] mx-auto w-full px-6 lg:px-8 py-8 border-t border-[#DCE0D6] flex flex-col sm:flex-row items-center justify-between font-mono text-xs font-bold text-[#4B5A7A] relative z-10 bg-[#EEF0EB]/50 backdrop-blur-sm">
-        <span>2026 ClauseProof // SEBI Securities Market TechSprint</span>
-        <div className="flex items-center gap-6 mt-4 sm:mt-0 text-[#0B1120] font-extrabold">
-          <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#086F83] animate-pulse" /> Compliance-as-Code</span>
-          <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#0B8CA5]" /> Indian Data Localization</span>
+      <footer className="w-full px-6 lg:px-10 py-8 border-t border-[#DCE0D6] font-mono text-xs font-bold text-[#4B5A7A] relative z-10 bg-[#EEF0EB]/50 backdrop-blur-sm">
+        <div className="max-w-[1440px] mx-auto w-full flex flex-col sm:flex-row items-center justify-between">
+          <span>2026 ClauseProof // SEBI Securities Market TechSprint</span>
+          <div className="flex items-center gap-6 mt-4 sm:mt-0 text-[#0B1120] font-extrabold">
+            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#086F83] animate-pulse" /> Compliance-as-Code</span>
+            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#0B8CA5]" /> Indian Data Localization</span>
+          </div>
         </div>
       </footer>
     </div>

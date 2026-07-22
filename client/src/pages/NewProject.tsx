@@ -93,7 +93,7 @@ export const NewProject: React.FC = () => {
   const inputCls = "w-full px-4 py-2.5 rounded-xl bg-white border border-[#E4E2D8] text-[#16233D] text-sm placeholder-[#8A93A6] focus:outline-none focus:border-[#2E7D8C] focus:ring-1 focus:ring-[#2E7D8C]/20 transition-all font-sans";
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 text-[#16233D]">
+    <div className="max-w-6xl mx-auto space-y-8 text-[#16233D]">
       {/* Header */}
       <div className="flex items-center justify-between pb-6 border-b border-[#E4E2D8]">
         <div className="flex items-center gap-4">

@@ -45,7 +45,7 @@ export const Auth: React.FC = () => {
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#C9762E]/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
       </div>
 
-      <div className="w-full max-w-md animate-scale-in relative z-10">
+      <div className="w-full max-w-xl animate-scale-in relative z-10">
         {/* Brand */}
         <div className="text-center mb-8">
           <div className="inline-flex w-16 h-16 rounded-2xl bg-gradient-to-br from-[#16233D] to-[#2E7D8C] items-center justify-center text-white shadow-elevated mb-4 hover-lift">
